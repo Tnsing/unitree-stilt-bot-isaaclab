@@ -16,5 +16,16 @@
   "final_base_velocity_error_xy": 0.0984,
   "final_base_velocity_error_yaw": 0.4968,
   "evidence_boundary": "runtime and PPO smoke only; not learned walking and not stilt walking",
-  "source_log": "/data/robot_motion_lib_isaaclab_eval/IsaacLab/logs/rsl_rl/g1_flat/2026-10-27_19-02-42_smoke"
+  "source_log": "/data/robot_motion_lib_isaaclab_eval/IsaacLab/logs/rsl_rl/g1_flat/2026-10-27_19-02-42_smoke",
+  "project_warmup_smoke": {
+    "task": "StiltBot-G1-Warmup-v0",
+    "num_envs": 4,
+    "max_iterations": 2,
+    "environment_steps": 192,
+    "seed": 42,
+    "status": "completed",
+    "final_mean_reward": -6.02,
+    "final_mean_episode_length": 35.33,
+    "source_log": "/data/踩高跷/logs/rsl_rl/g1_flat/2026-10-27_19-09-42"
+  }
 }

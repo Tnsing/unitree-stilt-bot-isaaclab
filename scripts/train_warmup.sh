@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 set -euo pipefail
+export TERM=${TERM:-xterm}
 
 ROOT=$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)
 ISAACLAB_PATH=${ISAACLAB_PATH:-/data/robot_motion_lib_isaaclab_eval/IsaacLab}
