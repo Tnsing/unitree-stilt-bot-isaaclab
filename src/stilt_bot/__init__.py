@@ -1,19 +1,47 @@
 """Project-owned Isaac Lab task registrations.
 
-The warm-up task intentionally reuses Isaac Lab's native Unitree G1 asset and PPO
-configuration. The attached-stilt task is not registered until its USD and contact
-validation are complete.
+All registered tasks use Unitree's native G1 humanoid asset on flat ground.  No
+stilt geometry is registered in this phase.  The four formal skills are kept as
+separate Gym IDs so their logs, checkpoints and videos cannot be confused.
 """
 
 import gymnasium as gym
 
 
-gym.register(
-    id="StiltBot-G1-Warmup-v0",
-    entry_point="isaaclab.envs:ManagerBasedRLEnv",
-    disable_env_checker=True,
-    kwargs={
-        "env_cfg_entry_point": "stilt_bot.tasks.stilt_g1_env_cfg:StiltG1WarmupEnvCfg",
-        "rsl_rl_cfg_entry_point": "stilt_bot.tasks.stilt_g1_env_cfg:G1FlatPPORunnerCfg",
-    },
+def _register(task_id: str, env_cfg: str, runner_cfg: str) -> None:
+    gym.register(
+        id=task_id,
+        entry_point="isaaclab.envs:ManagerBasedRLEnv",
+        disable_env_checker=True,
+        kwargs={
+            "env_cfg_entry_point": env_cfg,
+            "rsl_rl_cfg_entry_point": runner_cfg,
+        },
+    )
+
+
+_register(
+    "StiltBot-G1-Warmup-v0",
+    "stilt_bot.tasks.stilt_g1_env_cfg:StiltG1WarmupEnvCfg",
+    "stilt_bot.tasks.stilt_g1_env_cfg:G1FlatPPORunnerCfg",
+)
+_register(
+    "StiltBot-G1-Walk-v0",
+    "stilt_bot.tasks.skill_g1_env_cfg:G1WalkEnvCfg",
+    "stilt_bot.tasks.skill_g1_env_cfg:G1WalkPPORunnerCfg",
+)
+_register(
+    "StiltBot-G1-Run-v0",
+    "stilt_bot.tasks.skill_g1_env_cfg:G1RunEnvCfg",
+    "stilt_bot.tasks.skill_g1_env_cfg:G1RunPPORunnerCfg",
+)
+_register(
+    "StiltBot-G1-Jump-v0",
+    "stilt_bot.tasks.skill_g1_env_cfg:G1JumpEnvCfg",
+    "stilt_bot.tasks.skill_g1_env_cfg:G1JumpPPORunnerCfg",
+)
+_register(
+    "StiltBot-G1-Dance-v0",
+    "stilt_bot.tasks.skill_g1_env_cfg:G1DanceEnvCfg",
+    "stilt_bot.tasks.skill_g1_env_cfg:G1DancePPORunnerCfg",
 )
