@@ -1,0 +1,19 @@
+project: unitree-stilt-bot-isaaclab
+robot: unitree_g1
+isaac_lab_version: "2.3.0"
+isaac_sim_version: "5.1.0"
+rl: rsl_rl
+algorithm: ppo
+warmup_task: StiltBot-G1-Warmup-v0
+attached_stilt_task: StiltBot-G1-Attached-v0
+warmup:
+  num_envs: 64
+  max_iterations: 10
+  seeds: [42]
+  status: smoke_only
+attached_stilt:
+  num_envs: 4096
+  max_iterations: 2000
+  seeds: [0, 1, 2]
+  status: not_started
+  requires_validated_usd: true
