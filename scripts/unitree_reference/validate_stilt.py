@@ -26,6 +26,10 @@ try:
     assert len(ids)==2,names
     masses=robot.root_physx_view.get_masses()[0];inertias=robot.root_physx_view.get_inertias()[0]
     mass_ok=bool(torch.allclose(masses[ids],torch.full_like(masses[ids],.8),atol=1e-4))
+    expected=json.loads((ROOT/'assets/unitree_ros/g1_description/stilt_spec.json').read_text())
+    inertia_matrices=inertias[ids].reshape(2,3,3)
+    inertia_positive=bool((torch.linalg.eigvalsh(inertia_matrices)>0).all())
+    inertia_matches=bool(torch.allclose(inertia_matrices.diagonal(dim1=-2,dim2=-1),torch.tensor(expected['diagonal_inertia_kg_m2']).expand(2,3),atol=1e-6))
     histories={k:[] for k in ['z','tip_z','stilt_force','ankle_force','tilt']}
     aids,_=sensor.find_bodies('.*ankle_roll_link')
     offset=torch.tensor([.035,0.,-.355],device=robot.device).expand(8,2,3)
@@ -44,7 +48,7 @@ try:
         if '/env_0/' not in path:continue
         if prim.HasAPI(UsdPhysics.CollisionAPI) and 'stilt' in path:collisions.append(path)
         if prim.IsA(UsdPhysics.FixedJoint) and 'stilt' in path:fixed.append(path)
-    report={'asset_spec':str(ROOT/'assets/unitree_ros/g1_description/stilt_spec.json'),'num_joints':robot.num_joints,'num_bodies':robot.num_bodies,'stilt_body_names':names,'stilt_masses_kg':masses[ids].tolist(),'stilt_inertias':inertias[ids].tolist(),'total_mass_kg':float(masses.sum()),'collision_prims':collisions,'fixed_joints':fixed,'max_stilt_force_N':float(force.max()),'mean_final_stilt_vertical_force_N':float(data['stilt_force'][-100:,:,:,2].sum(-1).mean()),'final_root_z_mean_m':float(data['z'][-1].mean()),'final_tilt_max_rad':float(data['tilt'][-1].max()),'minimum_tip_bottom_z_m':float(data['tip_z'].min()),'original_ankle_max_contact_force_N':float(np.linalg.norm(data['ankle_force'],axis=-1).max()),'default_pd_stable':bool(data['tilt'][-1].max()<.4),'passed':bool(mass_ok and len(collisions)>=4 and len(fixed)==2 and force.max()>10 and data['tip_z'].min()>-.04),'scope':'USD import + default-PD contact test; not trained stilt walking'}
+    report={'asset_spec':str(ROOT/'assets/unitree_ros/g1_description/stilt_spec.json'),'num_joints':robot.num_joints,'num_bodies':robot.num_bodies,'stilt_body_names':names,'stilt_masses_kg':masses[ids].tolist(),'stilt_inertias':inertias[ids].tolist(),'inertia_positive_definite':inertia_positive,'inertia_matches_analytic_spec':inertia_matches,'total_mass_kg':float(masses.sum()),'collision_prims':collisions,'fixed_joints':fixed,'max_stilt_force_N':float(force.max()),'mean_final_stilt_vertical_force_N':float(data['stilt_force'][-100:,:,:,2].sum(-1).mean()),'final_root_z_mean_m':float(data['z'][-1].mean()),'final_tilt_max_rad':float(data['tilt'][-1].max()),'minimum_tip_bottom_z_m':float(data['tip_z'].min()),'original_ankle_max_contact_force_N':float(np.linalg.norm(data['ankle_force'],axis=-1).max()),'default_pd_stable':bool(data['tilt'][-1].max()<.4),'passed':bool(mass_ok and inertia_positive and inertia_matches and len(collisions)>=4 and len(fixed)==2 and force.max()>10 and data['tip_z'].min()>-.04),'scope':'USD import + default-PD contact test; not trained stilt walking'}
     out=ROOT/'artifacts/unitree_reference/stilt_physics';out.mkdir(parents=True,exist_ok=True)
     np.savez_compressed(out/'contact_trajectory.npz',**data);(out/'validation.json').write_text(json.dumps(report,indent=2));print(json.dumps(report,indent=2))
     if not report['passed']:raise RuntimeError('Stilt physics validation failed')

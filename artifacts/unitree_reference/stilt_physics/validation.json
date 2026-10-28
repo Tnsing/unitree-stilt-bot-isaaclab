@@ -34,6 +34,8 @@
       0.000443866680143401
     ]
   ],
+  "inertia_positive_definite": true,
+  "inertia_matches_analytic_spec": true,
   "total_mass_kg": 38.941139221191406,
   "collision_prims": [
     "/World/envs/env_0/Robot/left_stilt_link/collisions/mesh_0/cylinder",
