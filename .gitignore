@@ -31,3 +31,13 @@ artifacts/unitree_reference/*.tmp
 artifacts/unitree_reference/progress.json
 artifacts/upstream/unitree_tree.json
 artifacts/upstream/unitree_ros_tree.json
+artifacts/research/*.source
+artifacts/research/*.txt
+artifacts/beyondmimic/**/*.npz
+artifacts/beyondmimic/**/*.yaml
+artifacts/beyondmimic/**/*.mp4
+artifacts/beyondmimic/*.lock
+artifacts/beyondmimic/current.json
+artifacts/beyondmimic/**/*.tmp
+artifacts/research/*.pdf
+artifacts/beyondmimic/**/progress.json

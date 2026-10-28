@@ -8,10 +8,10 @@ physical attached stilts. Task versions keep incompatible checkpoints separate.
 import gymnasium as gym
 
 
-def _register(task_id: str, env_cfg: str, runner_cfg: str) -> None:
+def _register(task_id: str, env_cfg: str, runner_cfg: str, entry_point: str = "isaaclab.envs:ManagerBasedRLEnv") -> None:
     gym.register(
         id=task_id,
-        entry_point="isaaclab.envs:ManagerBasedRLEnv",
+        entry_point=entry_point,
         disable_env_checker=True,
         kwargs={
             "env_cfg_entry_point": env_cfg,
@@ -64,3 +64,9 @@ for _skill,_env,_runner in [
     _register(f'UnitreeRef-G1-29dof-{_skill}-v0',
         f'stilt_bot.tasks.unitree_reference.env_cfg:{_env}',
         f'stilt_bot.tasks.unitree_reference.env_cfg:{_runner}')
+
+# Canonical BeyondMimic MDP; separate asset/observation/checkpoint lineage.
+_register('BeyondMimic-G1-29dof-Dance-v0',
+          'stilt_bot.tasks.beyondmimic.env_cfg:BeyondMimicDanceCfg',
+          'stilt_bot.tasks.beyondmimic.env_cfg:BeyondMimicDanceRunner',
+          entry_point='stilt_bot.tasks.beyondmimic.environment:BeyondMimicTrackingEnv')

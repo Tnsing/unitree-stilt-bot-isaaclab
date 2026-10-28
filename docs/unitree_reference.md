@@ -51,3 +51,13 @@ The independent final audit uses 64 environments, seed 20261028, no observation 
 Walk requires >=95% survival and speed RMSE <=0.25 m/s. Run uses <=0.4 m/s and requires repeated force-backed flight/landing. Dance requires >=95% full-clip survival, joint RMSE <=0.3 rad and body-position mean error <=0.15 m. Stilt walking additionally requires >=0.5 m forward displacement in >=80% environments with actual stilt support. Passing any of these nominal tests is not evidence of broad robustness or hardware transfer.
 
 Progress is stored in `artifacts/unitree_reference/progress.json`. Per-skill `milestone.json` separates `training_completed` from `task_gate_passed`, and includes configs, event/checkpoint/video hashes and audit paths. Raw stdout is under `logs/unitree_reference/`; all generated demonstrations are under `artifacts/unitree_reference/<skill>/video_<iteration>/demo.mp4`.
+
+## 2026-10-29 audit correction
+
+The original dance audit's first-step failure was caused by a stale reference cache
+following a full reset, not a valid policy failure. V2 synchronizes the cache at the
+same reference frame and snapshots physical state before autoreset. The same old
+checkpoint passes the corrected 64-environment full-clip audit. Historical V1 JSON
+and milestone manifests are intentionally retained as historical outputs and must
+not be interpreted as the corrected outcome. See `docs/beyondmimic_reproduction.md`
+and `artifacts/beyondmimic/legacy_dance_reset_regression_fixed/evaluation.json`.

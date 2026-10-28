@@ -84,3 +84,13 @@ TERM=xterm SKILL=run RUN=<timestamp> CHECKPOINT=model_1499.pt VIDEO_LENGTH=500 \
 ## 许可证与资产边界
 
 Unitree 和 Isaac Lab 资产保持为外部依赖，不在仓库中重新分发。人体动作或 retargeted motion 数据必须保留原始许可证和来源。成功启动仿真、奖励曲线、checkpoint 或单段视频不等同于真实机器人成功；当前里程碑只证明本地 Isaac Lab G1 技能训练和可复核 rollout 证据。
+
+## Official BeyondMimic tracking reproduction (2026-10-29)
+
+See [technical research, exact reproduction boundary and audit correction](docs/beyondmimic_reproduction.md).
+The official G1 cylinder asset and tracking MDP are separately pinned and ported to
+Lab 2.3 / Sim 5.1. A fresh 4096-env / 30000-iteration dance run is launched with
+`scripts/beyondmimic/run_training.py`; query the actual process and log with
+`scripts/beyondmimic/status.py`. This is motion tracking only, not guided diffusion,
+SONIC or SuperMimic. The old dance checkpoint passes the corrected full-clip audit;
+the stilt policy still fails forward walking. Historical evidence is retained.

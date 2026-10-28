@@ -1,0 +1,70 @@
+{
+  "task": "UnitreeRef-G1-29dof-Stilt-v0",
+  "checkpoint": "/data/\u8e29\u9ad8\u8df7/logs/rsl_rl/unitree_reference_stilt/2026-10-28_21-01-54_formal_unitree_ref_seed42/model_1000.pt",
+  "checkpoint_sha256": "0d4f6b683bc904bedbd2566885d5dc68d7ce5fb3bbcb915c43cb37945c94a3db",
+  "skill": "stilt",
+  "num_envs": 1,
+  "steps": 500,
+  "dt": 0.02,
+  "seed": 20261028,
+  "survival_rate": 1.0,
+  "fall_rate": 0.0,
+  "mean_speed_mps": -0.0016876807203516364,
+  "forward_rmse_mps": 0.30174919962882996,
+  "p95_tilt_deg": 1.5548452734947196,
+  "support_body_names": [
+    "left_stilt_link",
+    "right_stilt_link"
+  ],
+  "two_feet_unloaded_fraction": 0.0,
+  "upstream_commit": "2522f89ab8ad6b1188b0368d122d16cb0e3cb8c8",
+  "runtime": "Isaac Lab 2.3 / Isaac Sim 5.1 / PhysX compatibility port",
+  "stilt_geometry": true,
+  "pushes": false,
+  "reference_replay": false,
+  "boundary": "One held-out seed, nominal fixed command/full dance clip; not hardware or broad robustness evidence.",
+  "flight_event_count": [
+    0
+  ],
+  "stilt_forward_displacement_m": [
+    0.017971834167838097
+  ],
+  "mean_stilt_vertical_support_N": 395.4603576660156,
+  "stilt_spec": {
+    "description": "Parameterized simulated rigid-stilt prototype; not verified hardware geometry",
+    "pole_length_m": 0.3,
+    "pole_radius_m": 0.018,
+    "pad_xyz_m": [
+      0.12,
+      0.08,
+      0.02
+    ],
+    "mass_per_stilt_kg": 0.8,
+    "com_local_m": [
+      0.035,
+      0,
+      -0.22499999999999998
+    ],
+    "diagonal_inertia_kg_m2": [
+      0.008501933333333333,
+      0.008635266666666665,
+      0.0004438666666666666
+    ],
+    "total_added_mass_kg": 1.6,
+    "fixed_joints": [
+      "left_stilt_fixed",
+      "right_stilt_fixed"
+    ],
+    "merge_fixed_joints": false,
+    "extra_actuators": 0,
+    "sole_drop_relative_to_original_m": 0.32,
+    "urdf": "/data/\u8e29\u9ad8\u8df7/assets/unitree_ros/g1_description/g1_29dof_stilt_030.urdf"
+  },
+  "horizon_complete": false,
+  "gate": {
+    "definition": "30 s survival >=95%, speed RMSE <=0.25 m/s (run <=0.4); >=0.5 m forward displacement in >=80% environments, actual stilt ground contact",
+    "passed": false
+  },
+  "video": "/data/\u8e29\u9ad8\u8df7/artifacts/unitree_reference/stilt/video_1000/demo.mp4",
+  "video_sha256": "ad98049c043dbcc064cca3d206aa7adf06e5af967f8ef0dd807e10ac24518d47"
+}

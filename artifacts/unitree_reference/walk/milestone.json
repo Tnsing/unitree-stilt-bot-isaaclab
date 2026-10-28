@@ -1,0 +1,543 @@
+{
+  "created_at": "2026-10-28T11:37:36.594600+00:00",
+  "skill": "walk",
+  "training_completed": true,
+  "task_gate_passed": true,
+  "declared_iteration_budget": 2000,
+  "final_iteration": 1999,
+  "run_dir": "/data/\u8e29\u9ad8\u8df7/logs/rsl_rl/unitree_reference_walk/2026-10-28_18-55-57_formal_unitree_ref_seed42",
+  "training_stdout": {
+    "path": "/data/\u8e29\u9ad8\u8df7/logs/unitree_reference/walk.train.log",
+    "bytes": 3660011,
+    "sha256": "2116f10598e43b1d7782d429f3ed04c0c09cff2ebba8ab4d41382a8ed1d2104d"
+  },
+  "launch_provenance": {
+    "available": false,
+    "reason": "Training launched before launch-hash recorder was installed; env/agent snapshots and periodic checkpoints retained"
+  },
+  "stilt_specification": null,
+  "robot_urdf": {
+    "path": "/data/\u8e29\u9ad8\u8df7/assets/unitree_ros/g1_description/g1_29dof_rev_1_0.urdf",
+    "bytes": 34446,
+    "sha256": "c0ae739c640c3e2c00d1bdd8810b5d6e59601487bd1a3995859f9543269ee5c8"
+  },
+  "configs": [
+    {
+      "path": "/data/\u8e29\u9ad8\u8df7/logs/rsl_rl/unitree_reference_walk/2026-10-28_18-55-57_formal_unitree_ref_seed42/params/env.yaml",
+      "bytes": 32405,
+      "sha256": "8b6f72f3df1dc4fc6372fd1e6eabce8b85411a7dea53ecc97879798f12692c9f"
+    },
+    {
+      "path": "/data/\u8e29\u9ad8\u8df7/logs/rsl_rl/unitree_reference_walk/2026-10-28_18-55-57_formal_unitree_ref_seed42/params/agent.yaml",
+      "bytes": 1033,
+      "sha256": "cc20c96910c155136654271557e84f353d7180ec6d9b8fe4a42c58d7218c3479"
+    }
+  ],
+  "events": [
+    {
+      "path": "/data/\u8e29\u9ad8\u8df7/logs/rsl_rl/unitree_reference_walk/2026-10-28_18-55-57_formal_unitree_ref_seed42/events.out.tfevents.1793184972.NSWS1050.3441509.0",
+      "bytes": 4687470,
+      "sha256": "c2ae2196cbc42e41822669e91d96ac73418f21681738cae771f2d050f8b5b1e9"
+    }
+  ],
+  "checkpoints": [
+    {
+      "iteration": 0,
+      "path": "/data/\u8e29\u9ad8\u8df7/logs/rsl_rl/unitree_reference_walk/2026-10-28_18-55-57_formal_unitree_ref_seed42/model_0.pt",
+      "bytes": 10010839,
+      "sha256": "a72fdea8077212cc4b6190f2240230f05d227154d0332933fd1550f10502b078"
+    },
+    {
+      "iteration": 100,
+      "path": "/data/\u8e29\u9ad8\u8df7/logs/rsl_rl/unitree_reference_walk/2026-10-28_18-55-57_formal_unitree_ref_seed42/model_100.pt",
+      "bytes": 10010839,
+      "sha256": "992868ba3ec9e5ea73e95b9e7046c99b2e78f6c0000b513be60afff8257e487a"
+    },
+    {
+      "iteration": 200,
+      "path": "/data/\u8e29\u9ad8\u8df7/logs/rsl_rl/unitree_reference_walk/2026-10-28_18-55-57_formal_unitree_ref_seed42/model_200.pt",
+      "bytes": 10010839,
+      "sha256": "791ff74d14007635c3154921b5cbf23af2e716e87ab1b43270983f2d0f70faaa"
+    },
+    {
+      "iteration": 300,
+      "path": "/data/\u8e29\u9ad8\u8df7/logs/rsl_rl/unitree_reference_walk/2026-10-28_18-55-57_formal_unitree_ref_seed42/model_300.pt",
+      "bytes": 10010839,
+      "sha256": "f7a3fd18add0c4187e0566304e703464572a6a512d1d9b22f2f668b6254f0174"
+    },
+    {
+      "iteration": 400,
+      "path": "/data/\u8e29\u9ad8\u8df7/logs/rsl_rl/unitree_reference_walk/2026-10-28_18-55-57_formal_unitree_ref_seed42/model_400.pt",
+      "bytes": 10010839,
+      "sha256": "1147a7594b406dbfea0162e71716afa8fd15a398aec9589125078c11d968665e"
+    },
+    {
+      "iteration": 500,
+      "path": "/data/\u8e29\u9ad8\u8df7/logs/rsl_rl/unitree_reference_walk/2026-10-28_18-55-57_formal_unitree_ref_seed42/model_500.pt",
+      "bytes": 10010839,
+      "sha256": "6f15f121112ac8f535f57a548d3c3253d611e97a614e5fc2dd358d70fbc6d416"
+    },
+    {
+      "iteration": 600,
+      "path": "/data/\u8e29\u9ad8\u8df7/logs/rsl_rl/unitree_reference_walk/2026-10-28_18-55-57_formal_unitree_ref_seed42/model_600.pt",
+      "bytes": 10010839,
+      "sha256": "b30c422309d5fe1a4afccc0772fa34beaf9e749a2457379b43da736cfde6e364"
+    },
+    {
+      "iteration": 700,
+      "path": "/data/\u8e29\u9ad8\u8df7/logs/rsl_rl/unitree_reference_walk/2026-10-28_18-55-57_formal_unitree_ref_seed42/model_700.pt",
+      "bytes": 10010839,
+      "sha256": "e9cd611df25360bdc6959a5f3e7c4d63115f5710e0a2b0881d30af4645120452"
+    },
+    {
+      "iteration": 800,
+      "path": "/data/\u8e29\u9ad8\u8df7/logs/rsl_rl/unitree_reference_walk/2026-10-28_18-55-57_formal_unitree_ref_seed42/model_800.pt",
+      "bytes": 10010839,
+      "sha256": "d09738e7526dbcef9f20a7547b0178f4307b0044654286b0523c11d1d5412199"
+    },
+    {
+      "iteration": 900,
+      "path": "/data/\u8e29\u9ad8\u8df7/logs/rsl_rl/unitree_reference_walk/2026-10-28_18-55-57_formal_unitree_ref_seed42/model_900.pt",
+      "bytes": 10010839,
+      "sha256": "902507093599b27ff376045916534d29172a24dea56051b153c6056ee10cdfbe"
+    },
+    {
+      "iteration": 1000,
+      "path": "/data/\u8e29\u9ad8\u8df7/logs/rsl_rl/unitree_reference_walk/2026-10-28_18-55-57_formal_unitree_ref_seed42/model_1000.pt",
+      "bytes": 10010839,
+      "sha256": "55cd7dac618887c6aa185461cd7c196eaf764423c100c74aff0cf68c9dcfdde7"
+    },
+    {
+      "iteration": 1100,
+      "path": "/data/\u8e29\u9ad8\u8df7/logs/rsl_rl/unitree_reference_walk/2026-10-28_18-55-57_formal_unitree_ref_seed42/model_1100.pt",
+      "bytes": 10010839,
+      "sha256": "9aaa256f391078b44f1cc56f614b6d5ff2c74d5b75a23644004ed0e56478073a"
+    },
+    {
+      "iteration": 1200,
+      "path": "/data/\u8e29\u9ad8\u8df7/logs/rsl_rl/unitree_reference_walk/2026-10-28_18-55-57_formal_unitree_ref_seed42/model_1200.pt",
+      "bytes": 10010839,
+      "sha256": "f0ecf1874acd610a1f89e487b1bbea763df7283f8d93829c29f8a8c981d6d905"
+    },
+    {
+      "iteration": 1300,
+      "path": "/data/\u8e29\u9ad8\u8df7/logs/rsl_rl/unitree_reference_walk/2026-10-28_18-55-57_formal_unitree_ref_seed42/model_1300.pt",
+      "bytes": 10010839,
+      "sha256": "30df9500a88167bb2a3e57735a92efac5d220da0b00283ca0dbce6e02ec8d805"
+    },
+    {
+      "iteration": 1400,
+      "path": "/data/\u8e29\u9ad8\u8df7/logs/rsl_rl/unitree_reference_walk/2026-10-28_18-55-57_formal_unitree_ref_seed42/model_1400.pt",
+      "bytes": 10010839,
+      "sha256": "3dd9bdfb3240f059e897ea472d071008727278679ee1e79f70a4522760ba5e75"
+    },
+    {
+      "iteration": 1500,
+      "path": "/data/\u8e29\u9ad8\u8df7/logs/rsl_rl/unitree_reference_walk/2026-10-28_18-55-57_formal_unitree_ref_seed42/model_1500.pt",
+      "bytes": 10010839,
+      "sha256": "109742ac571c99d74ed704398f4965a8ebe8127c37abbb5a294380014f4043d5"
+    },
+    {
+      "iteration": 1600,
+      "path": "/data/\u8e29\u9ad8\u8df7/logs/rsl_rl/unitree_reference_walk/2026-10-28_18-55-57_formal_unitree_ref_seed42/model_1600.pt",
+      "bytes": 10010839,
+      "sha256": "3ad82f9b8e18e3f8e4c7646214045f256dc3a4705463acf80d7f6dbce9ed1e58"
+    },
+    {
+      "iteration": 1700,
+      "path": "/data/\u8e29\u9ad8\u8df7/logs/rsl_rl/unitree_reference_walk/2026-10-28_18-55-57_formal_unitree_ref_seed42/model_1700.pt",
+      "bytes": 10010839,
+      "sha256": "19fb0be47b95012e585431180f77d3a3da87a1764958eed8bd91aca46c424d4d"
+    },
+    {
+      "iteration": 1800,
+      "path": "/data/\u8e29\u9ad8\u8df7/logs/rsl_rl/unitree_reference_walk/2026-10-28_18-55-57_formal_unitree_ref_seed42/model_1800.pt",
+      "bytes": 10010839,
+      "sha256": "81f6ba375337cec53f9927df08dff636814893cf5866c0702169cb2bd68f4451"
+    },
+    {
+      "iteration": 1900,
+      "path": "/data/\u8e29\u9ad8\u8df7/logs/rsl_rl/unitree_reference_walk/2026-10-28_18-55-57_formal_unitree_ref_seed42/model_1900.pt",
+      "bytes": 10010839,
+      "sha256": "82d7ea896e60eae3e3ad953160139b01b37caaaf9d7797f979a32d6189ca8686"
+    },
+    {
+      "iteration": 1999,
+      "path": "/data/\u8e29\u9ad8\u8df7/logs/rsl_rl/unitree_reference_walk/2026-10-28_18-55-57_formal_unitree_ref_seed42/model_1999.pt",
+      "bytes": 10010839,
+      "sha256": "8449aea5d9285cc0530aa2319ac4641047b2a6e14119f76dfba0fb031f0d91c5"
+    }
+  ],
+  "last_scalars": {
+    "Episode_Reward/track_lin_vel_xy": {
+      "step": 1999,
+      "value": 0.90923011302948
+    },
+    "Episode_Reward/track_ang_vel_z": {
+      "step": 1999,
+      "value": 0.2876220941543579
+    },
+    "Episode_Reward/alive": {
+      "step": 1999,
+      "value": 0.15000085532665253
+    },
+    "Episode_Reward/base_linear_velocity": {
+      "step": 1999,
+      "value": -0.017095107585191727
+    },
+    "Episode_Reward/base_angular_velocity": {
+      "step": 1999,
+      "value": -0.027467206120491028
+    },
+    "Episode_Reward/joint_vel": {
+      "step": 1999,
+      "value": -0.0981658324599266
+    },
+    "Episode_Reward/joint_acc": {
+      "step": 1999,
+      "value": -0.03662559762597084
+    },
+    "Episode_Reward/action_rate": {
+      "step": 1999,
+      "value": -0.2753337621688843
+    },
+    "Episode_Reward/dof_pos_limits": {
+      "step": 1999,
+      "value": -0.0006491695530712605
+    },
+    "Episode_Reward/energy": {
+      "step": 1999,
+      "value": -0.003335842862725258
+    },
+    "Episode_Reward/joint_deviation_arms": {
+      "step": 1999,
+      "value": -0.09309235215187073
+    },
+    "Episode_Reward/joint_deviation_waists": {
+      "step": 1999,
+      "value": -0.05356737971305847
+    },
+    "Episode_Reward/joint_deviation_legs": {
+      "step": 1999,
+      "value": -0.0838615894317627
+    },
+    "Episode_Reward/flat_orientation_l2": {
+      "step": 1999,
+      "value": -0.009259525686502457
+    },
+    "Episode_Reward/base_height": {
+      "step": 1999,
+      "value": -0.001538923941552639
+    },
+    "Episode_Reward/gait": {
+      "step": 1999,
+      "value": 0.5266770124435425
+    },
+    "Episode_Reward/feet_slide": {
+      "step": 1999,
+      "value": -0.027308469638228416
+    },
+    "Episode_Reward/feet_clearance": {
+      "step": 1999,
+      "value": 0.9704794883728027
+    },
+    "Episode_Reward/undesired_contacts": {
+      "step": 1999,
+      "value": -0.0003685185220092535
+    },
+    "Metrics/base_velocity/error_vel_xy": {
+      "step": 1999,
+      "value": 0.26858627796173096
+    },
+    "Metrics/base_velocity/error_vel_yaw": {
+      "step": 1999,
+      "value": 0.8045616149902344
+    },
+    "Episode_Termination/time_out": {
+      "step": 1999,
+      "value": 0.9970703125
+    },
+    "Episode_Termination/base_height": {
+      "step": 1999,
+      "value": 0.0
+    },
+    "Episode_Termination/bad_orientation": {
+      "step": 1999,
+      "value": 0.0029296875
+    },
+    "Loss/value_function": {
+      "step": 1999,
+      "value": 0.003948508761823177
+    },
+    "Loss/surrogate": {
+      "step": 1999,
+      "value": -0.01012804638594389
+    },
+    "Loss/entropy": {
+      "step": 1999,
+      "value": 4.766499996185303
+    },
+    "Loss/learning_rate": {
+      "step": 1999,
+      "value": 0.00017085937724914402
+    },
+    "Policy/mean_noise_std": {
+      "step": 1999,
+      "value": 0.306232750415802
+    },
+    "Perf/total_fps": {
+      "step": 1999,
+      "value": 94990.0
+    },
+    "Perf/collection time": {
+      "step": 1999,
+      "value": 0.9466309547424316
+    },
+    "Perf/learning_time": {
+      "step": 1999,
+      "value": 0.08824610710144043
+    },
+    "Train/mean_reward": {
+      "step": 1999,
+      "value": 42.328582763671875
+    },
+    "Train/mean_episode_length": {
+      "step": 1999,
+      "value": 1000.0
+    },
+    "Train/mean_reward/time": {
+      "step": 2388,
+      "value": 42.328582763671875
+    },
+    "Train/mean_episode_length/time": {
+      "step": 2388,
+      "value": 1000.0
+    }
+  },
+  "milestone_videos": [
+    {
+      "evaluation": "/data/\u8e29\u9ad8\u8df7/artifacts/unitree_reference/walk/video_1000/evaluation.json",
+      "checkpoint": {
+        "path": "/data/\u8e29\u9ad8\u8df7/logs/rsl_rl/unitree_reference_walk/2026-10-28_18-55-57_formal_unitree_ref_seed42/model_1000.pt",
+        "bytes": 10010839,
+        "sha256": "55cd7dac618887c6aa185461cd7c196eaf764423c100c74aff0cf68c9dcfdde7"
+      },
+      "video": {
+        "path": "/data/\u8e29\u9ad8\u8df7/artifacts/unitree_reference/walk/video_1000/demo.mp4",
+        "bytes": 3449732,
+        "sha256": "5f352a27653c443500859631068ff173ac9af64e26a106b9d287338cdad5bab3"
+      },
+      "metadata": {
+        "programs": [],
+        "streams": [
+          {
+            "width": 1280,
+            "height": 720,
+            "r_frame_rate": "50/1",
+            "duration": "10.000000",
+            "nb_frames": "500"
+          }
+        ]
+      }
+    },
+    {
+      "evaluation": "/data/\u8e29\u9ad8\u8df7/artifacts/unitree_reference/walk/video_1999/evaluation.json",
+      "checkpoint": {
+        "path": "/data/\u8e29\u9ad8\u8df7/logs/rsl_rl/unitree_reference_walk/2026-10-28_18-55-57_formal_unitree_ref_seed42/model_1999.pt",
+        "bytes": 10010839,
+        "sha256": "8449aea5d9285cc0530aa2319ac4641047b2a6e14119f76dfba0fb031f0d91c5"
+      },
+      "video": {
+        "path": "/data/\u8e29\u9ad8\u8df7/artifacts/unitree_reference/walk/video_1999/demo.mp4",
+        "bytes": 3235832,
+        "sha256": "9d2e684e0c1136bebf6b6b21de164fa431c77952841db833d15b900b31dbe753"
+      },
+      "metadata": {
+        "programs": [],
+        "streams": [
+          {
+            "width": 1280,
+            "height": 720,
+            "r_frame_rate": "50/1",
+            "duration": "10.000000",
+            "nb_frames": "500"
+          }
+        ]
+      }
+    },
+    {
+      "evaluation": "/data/\u8e29\u9ad8\u8df7/artifacts/unitree_reference/walk/video_500/evaluation.json",
+      "checkpoint": {
+        "path": "/data/\u8e29\u9ad8\u8df7/logs/rsl_rl/unitree_reference_walk/2026-10-28_18-55-57_formal_unitree_ref_seed42/model_500.pt",
+        "bytes": 10010839,
+        "sha256": "6f15f121112ac8f535f57a548d3c3253d611e97a614e5fc2dd358d70fbc6d416"
+      },
+      "video": {
+        "path": "/data/\u8e29\u9ad8\u8df7/artifacts/unitree_reference/walk/video_500/demo.mp4",
+        "bytes": 3227597,
+        "sha256": "2bb30370af81f443d133d9e06bd33eb6a6e3d9149d1824f086a0a763d416ad3f"
+      },
+      "metadata": {
+        "programs": [],
+        "streams": [
+          {
+            "width": 1280,
+            "height": 720,
+            "r_frame_rate": "50/1",
+            "duration": "10.000000",
+            "nb_frames": "500"
+          }
+        ]
+      }
+    }
+  ],
+  "audit": "/data/\u8e29\u9ad8\u8df7/artifacts/unitree_reference/walk/audit_final/evaluation.json",
+  "upstream": {
+    "repo": "unitreerobotics/unitree_rl_lab",
+    "branch": "isaaclab3.0",
+    "commit": "2522f89ab8ad6b1188b0368d122d16cb0e3cb8c8",
+    "files": {
+      "pyproject.toml": "d62ca084016c7ba3e315de9f55267894e64f6df9c45f65b23f9355177e0d2c9d",
+      "README.md": "47f6bc894ed1a2209b44c6fd93b33cc17dc777dbbdae349632f55520e9258fa6",
+      "scripts/list_envs.py": "94c2b6a17059b135d2488b06940c8af2262f3e1ab25d69daef047f496c45681c",
+      "scripts/rsl_rl/play.py": "c2b9f9bfbb9805b68a2661a63ecf2ac5330cff3e5c21db952ceb744b7205f5f4",
+      "scripts/rsl_rl/train.py": "329f1d257717fdb911311f11b1cf86e6cfaeef7ece81d499d6923ebde6d1fddb",
+      "scripts/rsl_rl/cli_args.py": "b8a8ffe8701cced8774cd760a3ccebe4a7325c911f2672079e862cc0c8a6a7d8",
+      "scripts/mimic/csv_to_npz.py": "58dc73e1ab223a281be1c47ff58f7bf6991f41852da34265689a9f8cb9a0228b",
+      "scripts/mimic/replay_npz.py": "1bee057600c78dd39a6acc3baa40af4235e20a04ef6533608062c2f698d24356",
+      "source/unitree_rl_lab/pyproject.toml": "0c6333771f9c09dc97a1a1e098ab0a40b6d3eb98b59e1ba909be5e9cd9d6a679",
+      "source/unitree_rl_lab/setup.py": "631a0d78cf7a1ba3c8f13a92df33bfd494dd81afe60db80d78bcefd71b8e0bfc",
+      "source/unitree_rl_lab/unitree_rl_lab/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source/unitree_rl_lab/unitree_rl_lab/ui_extension_example.py": "5df4d70fcf72019b5b0a08a21347e578c263de8fd15df362db36ec93f3759ff6",
+      "source/unitree_rl_lab/unitree_rl_lab/assets/robots/unitree_actuators.py": "96fa850770b45bd17fa2465e7b9a9e042163e767e948c83e6dd583b47afd0b58",
+      "source/unitree_rl_lab/unitree_rl_lab/assets/robots/unitree.py": "90d2cf506e6dd074b475cad1375d27e2e3c8e5268f0173215ab07e4257391f45",
+      "source/unitree_rl_lab/unitree_rl_lab/utils/parser_cfg.py": "7ee684f144296da4acfe731c5c81042afa91266b695341dc761342e00099b85b",
+      "source/unitree_rl_lab/unitree_rl_lab/utils/export_deploy_cfg.py": "876f1a7964fdee598f8e92aea3a80ab91f43c5240b460305cde369d9231c4649",
+      "source/unitree_rl_lab/unitree_rl_lab/tasks/__init__.py": "a7f136fe4ed4af363e1e190c4d9fe345c022ed148986fa5e7897d0679fc2de62",
+      "source/unitree_rl_lab/unitree_rl_lab/tasks/mimic/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source/unitree_rl_lab/unitree_rl_lab/tasks/mimic/mdp/__init__.py": "08a3f11291a0c7fa15ff4d9a06e6f5a72550f05f84efde0533b885c914b6544d",
+      "source/unitree_rl_lab/unitree_rl_lab/tasks/mimic/mdp/observations.py": "abc278f2b1797cedad2270310ead83963394189cf9d7c083b00f939b476dcae0",
+      "source/unitree_rl_lab/unitree_rl_lab/tasks/mimic/mdp/events.py": "c6a2eb86dadf60e5761ab18eaff54efa7ba8d78a68273d96a29169adb565ea3d",
+      "source/unitree_rl_lab/unitree_rl_lab/tasks/mimic/mdp/terminations.py": "94656be6fb2999aba4c4093dfbc2aecdadbb0f4dd2b84f267ca7cee3b44b9a85",
+      "source/unitree_rl_lab/unitree_rl_lab/tasks/mimic/mdp/rewards.py": "a68b6fa86254045d247348742418c1443c9030f2b1e77e2efc8bb3df0c80cd8e",
+      "source/unitree_rl_lab/unitree_rl_lab/tasks/mimic/mdp/commands.py": "9c0df2b1d43cc361d1167251fe947ac443383f5be99d61a50ab8433b2a79b1ef",
+      "source/unitree_rl_lab/unitree_rl_lab/tasks/mimic/robots/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source/unitree_rl_lab/unitree_rl_lab/tasks/mimic/robots/g1_29dof/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source/unitree_rl_lab/unitree_rl_lab/tasks/mimic/robots/g1_29dof/gangnanm_style/tracking_env_cfg.py": "b0d61d916bf6af8c95ee5bbed9d870fd1563ab749f050801df18e63bdd851c72",
+      "source/unitree_rl_lab/unitree_rl_lab/tasks/mimic/robots/g1_29dof/gangnanm_style/__init__.py": "e879f64d41de6219610906cfb4daabb29de12f8a28143b72958dace46cd6934a",
+      "source/unitree_rl_lab/unitree_rl_lab/tasks/mimic/robots/g1_29dof/gangnanm_style/G1_gangnam_style_V01.bvh_60hz.csv": "d74f54662546969826a25386a21f429b6b7f8fd4793578c9923ca5ce4e9ee0aa",
+      "source/unitree_rl_lab/unitree_rl_lab/tasks/mimic/robots/g1_29dof/dance_102/tracking_env_cfg.py": "ecc6e0314f41623265c912bd2b8c0384726ff7a4ac596578efe7b6ff1f7f0cd6",
+      "source/unitree_rl_lab/unitree_rl_lab/tasks/mimic/robots/g1_29dof/dance_102/__init__.py": "5ebec645b5f8a9d5d6fc5da87a3a5275dd5f4786a0f6276de27f5e83d66c802c",
+      "source/unitree_rl_lab/unitree_rl_lab/tasks/mimic/robots/g1_29dof/dance_102/G1_Take_102.bvh_60hz.csv": "2fe91cef5de23a6ebf318c130dccf7ecc6c10859675452ea28f077198f06d1e2",
+      "source/unitree_rl_lab/unitree_rl_lab/tasks/mimic/agents/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source/unitree_rl_lab/unitree_rl_lab/tasks/mimic/agents/rsl_rl_ppo_cfg.py": "c1b1233c595c3606b575a1a337d823587c7af3dd63815349eda42aa514b8bee4",
+      "source/unitree_rl_lab/unitree_rl_lab/tasks/locomotion/__init__.py": "41c53df2e4bdd0c1a40340e9428bc085d68ea7fa0e71db3ab80b3667028f6245",
+      "source/unitree_rl_lab/unitree_rl_lab/tasks/locomotion/mdp/__init__.py": "d323b992217f913e8d42eb22cbbc6feb2c61dc26513f030816c62ba6a4c7da92",
+      "source/unitree_rl_lab/unitree_rl_lab/tasks/locomotion/mdp/observations.py": "93be6a6361e53b17a9ebbc1654dabe47720a5a5d584c2252c08f2a47c62fef8a",
+      "source/unitree_rl_lab/unitree_rl_lab/tasks/locomotion/mdp/events.py": "7b882f0f3e8f435246fe15198e0131fcbc8b62fe7bd2776ba7a489d007c1b0e2",
+      "source/unitree_rl_lab/unitree_rl_lab/tasks/locomotion/mdp/curriculums.py": "a4a0898863a0ac5d50eb8e754d06a2b006ec943aaa18fddfca89c2a922bfd436",
+      "source/unitree_rl_lab/unitree_rl_lab/tasks/locomotion/mdp/rewards.py": "34a47cb8cf467e88bf13f482937483d4782be4bf7d73589f6940cfb3563ea7e0",
+      "source/unitree_rl_lab/unitree_rl_lab/tasks/locomotion/mdp/commands/__init__.py": "d7cd7bad0a623601aacbed0285f079a26f27650f8274c10bf71f8f3c12cd4ff7",
+      "source/unitree_rl_lab/unitree_rl_lab/tasks/locomotion/mdp/commands/velocity_command.py": "87358cad63a01f6131fa4ba9bbbe0a177cfcb03f142fb3ac74fd356df57cc042",
+      "source/unitree_rl_lab/unitree_rl_lab/tasks/locomotion/robots/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source/unitree_rl_lab/unitree_rl_lab/tasks/locomotion/robots/g1/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source/unitree_rl_lab/unitree_rl_lab/tasks/locomotion/robots/g1/29dof/__init__.py": "6e41938911b12fd98b790844c4035ac78161b4720e2bc521c97e4ea2265da8b5",
+      "source/unitree_rl_lab/unitree_rl_lab/tasks/locomotion/robots/g1/29dof/velocity_warp_env_cfg.py": "230fc3b0a6c49a41ef2ea7a35b1939872a5e4171c33be4d7bbed5e8f6e6ac282",
+      "source/unitree_rl_lab/unitree_rl_lab/tasks/locomotion/robots/g1/29dof/velocity_direct_env_cfg.py": "e5371459443474caf5a0aa5646e71c25e006c71a17b11dd9f134c008f2f93924",
+      "source/unitree_rl_lab/unitree_rl_lab/tasks/locomotion/robots/g1/29dof/velocity_env_cfg.py": "376794f9a355f882594d43423abd9083d38fdec29af90b16abec821365b91f13",
+      "source/unitree_rl_lab/unitree_rl_lab/tasks/locomotion/robots/go2/__init__.py": "382534ef8f14fd3bbe57036b87c35bf9119d2eb61a8f04f8333570ad1ed3fa1d",
+      "source/unitree_rl_lab/unitree_rl_lab/tasks/locomotion/robots/go2/velocity_direct_env_cfg.py": "5932540f51eb2808fc103368f9aa3cd5c2e52e5a820802730a7f919db3056b45",
+      "source/unitree_rl_lab/unitree_rl_lab/tasks/locomotion/robots/go2/velocity_env_cfg.py": "65fc8bf9c10a08007f9075567f03403653c835f97c3cf27b80e5d7a304122ed3",
+      "source/unitree_rl_lab/unitree_rl_lab/tasks/locomotion/robots/h1/__init__.py": "c10a7f736bc8f5c80a62b7b5b56d46f6ae38d2c8be8d0558d30c7c5c63d90105",
+      "source/unitree_rl_lab/unitree_rl_lab/tasks/locomotion/robots/h1/velocity_direct_env_cfg.py": "4614b263488493f9336254bf604a6a301d2ea6b8e0abbbdb0a39b9f807bc83a7",
+      "source/unitree_rl_lab/unitree_rl_lab/tasks/locomotion/robots/h1/velocity_env_cfg.py": "eb14fc351318aa68316c931e9f2d8c989d2a6c6cf4ad4007b946611d6e2dba13",
+      "source/unitree_rl_lab/unitree_rl_lab/tasks/locomotion/agents/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source/unitree_rl_lab/unitree_rl_lab/tasks/locomotion/agents/rsl_rl_ppo_cfg.py": "fb265b668601fa81648d1cdcdddb5c3ac4be707a776d8c82cf5993162c0ca91b",
+      "source/unitree_rl_lab/unitree_rl_lab/tasks/locomotion/direct/__init__.py": "be2c6f19679f1ec0902f67868ec4d8039cb2ab52da3b188f7b02bab95e8d81c1",
+      "source/unitree_rl_lab/unitree_rl_lab/tasks/locomotion/direct/velocity_warp_g1_env.py": "a1fa13c6fe04551439d3e2525ebf8c08fa4f1005bfce0b5bc41ddf7f52dafc31",
+      "source/unitree_rl_lab/unitree_rl_lab/tasks/locomotion/direct/velocity_base_env.py": "14f0faf56c05255ce3db2c60fa445ffcd9e3d5e2698de18d7563ca52822b04db",
+      "source/unitree_rl_lab/unitree_rl_lab/tasks/locomotion/direct/velocity_base_env_cfg.py": "2a1f9168432aeca0680248c81e7731ce8d6e5b9ba4133c0633412b215296bb61",
+      "source/unitree_rl_lab/unitree_rl_lab/tasks/locomotion/direct/velocity_warp_env_g1_kernels.py": "c3e161d96fe9347bc7bda08b7a54c9dff6ff5f3a08d2e44dca92398d31aa6dc7",
+      "source/unitree_rl_lab/unitree_rl_lab/tasks/locomotion/direct/warp_kernels/velocity_terminations.py": "3e51f88663193f890fecac4cee09e5861ead77698378b6ef4fd8dfd0b9294c9b",
+      "source/unitree_rl_lab/unitree_rl_lab/tasks/locomotion/direct/warp_kernels/velocity_rewards.py": "687cc56bdbf06bd6d57a65e1d06f84a66ce3c5935ce02e582a7b04990f9eb278",
+      "source/unitree_rl_lab/unitree_rl_lab/tasks/locomotion/direct/warp_kernels/__init__.py": "32851302f9ea1c9cdb4308e5677134477af68242eea1194d2db7b2ddb2774c67",
+      "source/unitree_rl_lab/unitree_rl_lab/tasks/locomotion/direct/warp_kernels/reset_events.py": "fa27ca6dd538a2634a65605209eb6c560a37526e04b259bae3898bdc033be3a1",
+      "source/unitree_rl_lab/unitree_rl_lab/tasks/locomotion/direct/warp_kernels/buffers.py": "ed8494423e4c9e464758c312f2e904651c3ce18db172b0b8cec087af9f7ba4a3",
+      "source/unitree_rl_lab/unitree_rl_lab/tasks/locomotion/direct/warp_kernels/actions.py": "c4f0c5a193e0c9d65dc7f4de034ee458a9a8e28ecaac3933283bc00e033b9da7",
+      "source/unitree_rl_lab/unitree_rl_lab/tasks/locomotion/direct/warp_kernels/rng.py": "fd39e1ce9b4e974772914c39e62034d9e0a84e5d3c73d26cb04893e4eb32ac27",
+      "source/unitree_rl_lab/unitree_rl_lab/tasks/locomotion/direct/warp_kernels/velocity_obs.py": "2f915b8b314ca89181152c41b36d9321e1e8f5d8d7fb1120322434f07e820545",
+      "source/unitree_rl_lab/unitree_rl_lab/tasks/locomotion/direct/warp_kernels/commands.py": "54547ad4456466fb426e50e69cbf6f788155448bb7bd26b8a9b0404b05f1f22c",
+      "source/unitree_rl_lab/unitree_rl_lab/tasks/locomotion/direct/warp_kernels/interval_events.py": "6fd6bf42094685dec3914d9271ec1be68b790b89401c2199a411c66be88530a6",
+      "source/unitree_rl_lab/docs/CHANGELOG.rst": "804f899f07453ff2bd4a28d9a7ca15d0ae47249ea6178d8aef5bae2d02b9dec8",
+      "source/unitree_rl_lab/config/extension.toml": "9beb359be4ff8d4ed228e56d44eb00e050273f44b69c704a9bd470b2c9070878"
+    }
+  },
+  "compat_patch": {
+    "path": "/data/\u8e29\u9ad8\u8df7/artifacts/upstream/unitree_isaaclab23.patch",
+    "bytes": 39631,
+    "sha256": "a864f79916b4b2dbd9eed21307eb0473e07e133acf811549e9c82a8ccbb8b9eb"
+  },
+  "asset_provenance": {
+    "source": "unitreerobotics/unitree_ros",
+    "ref": "deeb607f3a8945a394f53068c28b3a88dde7ff06",
+    "downloaded_date": "2026-10-28",
+    "files": {
+      "g1_29dof_rev_1_0.urdf": "c0ae739c640c3e2c00d1bdd8810b5d6e59601487bd1a3995859f9543269ee5c8",
+      "meshes/left_rubber_hand.STL": "cff2221a690fa69303f61fce68f2d155c1517b52efb6ca9262dd56e0bc6e70fe",
+      "meshes/right_ankle_pitch_link.STL": "15be426539ec1be70246d4d82a168806db64a41301af8b35c197a33348c787a9",
+      "meshes/left_hip_roll_link.STL": "91f25922ee8a7c3152790051bebad17b4d9cd243569c38fe340285ff93a97acf",
+      "meshes/right_shoulder_pitch_link.STL": "24cdb387e0128dfe602770a81c56cdce3a0181d34d039a11d1aaf8819b7b8c02",
+      "meshes/right_knee_link.STL": "63c4008449c9bbe701a6e2b557b7a252e90cf3a5abcf54cee46862b9a69f8ec8",
+      "meshes/right_wrist_yaw_link.STL": "bc9dece2d12509707e0057ba2e48df8f3d56db0c79410212963a25e8a50f61a6",
+      "meshes/left_wrist_yaw_link.STL": "83f8fb3a726bf9613d65dd14f0f447cb918c3c95b3938042a0c9c09749267d3b",
+      "meshes/right_shoulder_yaw_link.STL": "a0b76489271da0c72461a344c9ffb0f0c6e64f019ea5014c1624886c442a2fe5",
+      "meshes/pelvis.STL": "5ba6bbc888e630550140d3c26763f10206da8c8bd30ed886b8ede41c61f57a31",
+      "meshes/torso_link_rev_1_0.STL": "11ddb46f2098efbbd8816b1d65893632d8e78be936376c7cdcd6771899ccc723",
+      "meshes/logo_link.STL": "8571a0a19bc4916fa55f91449f51d5fdefd751000054865a842449429d5f155b",
+      "meshes/right_elbow_link.STL": "1be925d7aa268bb8fddf5362b9173066890c7d32092c05638608126e59d1e2ab",
+      "meshes/pelvis_contour_link.STL": "5cc5c2c7a312329e3feeb2b03d3fc09fc29705bd01864f6767e51be959662420",
+      "meshes/left_ankle_roll_link.STL": "c4092af943141d4d9f74232f3cfa345afc6565f46a077793b8ae0e68b39dc33f",
+      "meshes/left_knee_link.STL": "8d92b9e3d3a636761150bb8025e32514c4602b91c7028d523ee42b3e632de477",
+      "meshes/right_wrist_roll_link.STL": "a7ee9212ff5b94d6cb7f52bb1bbf3f352194d5b598acff74f4c77d340c5b344f",
+      "meshes/waist_yaw_link_rev_1_0.STL": "ec6db442b11f25eed898b5add07940c85d804f300de24dcbd264ccd8be7d554c",
+      "meshes/right_hip_roll_link.STL": "4c254ef66a356f492947f360dd931965477b631e3fcc841f91ccc46d945d54f6",
+      "meshes/left_elbow_link.STL": "fa752198accd104d5c4c3a01382e45165b944fbbc5acce085059223324e5bed3",
+      "meshes/head_link.STL": "005fb67fbd3eff94aa8bf4a6e83238174e9f91b6721f7111594322f223724411",
+      "meshes/left_ankle_pitch_link.STL": "d49e3abc6f5b12e532062cd575b87b5ef40cd2a3fc18f54a1ca5bba4f773d51d",
+      "meshes/left_hip_yaw_link.STL": "a16d88aa6ddac8083aa7ad55ed317bea44b1fa003d314fba88965b7ed0f3b55b",
+      "meshes/left_wrist_roll_link.STL": "edc387c9a0ba8c2237e9b296d32531426fabeb6f53e58df45c76106bca74148c",
+      "meshes/right_shoulder_roll_link.STL": "962b97c48f9ce9e8399f45dd9522e0865d19aa9fd299406b2d475a8fc4a53e81",
+      "meshes/right_ankle_roll_link.STL": "4b66222ea56653e627711b56d0a8949b4920da5df091da0ceb343f54e884e3a5",
+      "meshes/left_hip_pitch_link.STL": "4725168105ee768ee31638ef22b53f6be2d7641bfd7cfefe803488d884776fa4",
+      "meshes/left_shoulder_roll_link.STL": "fb9df21687773522598dc384f1a2945c7519f11cbc8bd372a49170316d6eee88",
+      "meshes/right_hip_pitch_link.STL": "e4f3c99d7f4a7d34eadbef9461fc66e3486cb5442db1ec50c86317d459f1a9c6",
+      "meshes/left_wrist_pitch_link.STL": "b251d8e05047f695d0f536cd78c11973cfa4e78d08cfe82759336cc3471de3a9",
+      "meshes/left_shoulder_pitch_link.STL": "f0d1cfd02fcf0d42f95e678eeca33da3afbcc366ffba5c052847773ec4f31d52",
+      "meshes/right_wrist_pitch_link.STL": "d22f8f3b3127f15a63e5be1ee273cd5075786c3142f1c3d9f76cbf43d2a26477",
+      "meshes/left_shoulder_yaw_link.STL": "1aa97e9748e924336567992181f78c7cd0652fd52a4afcca3df6b2ef6f9e712e",
+      "meshes/right_hip_yaw_link.STL": "e479c2936ca2057e9eb2f7dff6c189b7419d7b8484dea0b298cbb36a2a6aa668",
+      "meshes/right_rubber_hand.STL": "99533b778bca6246144fa511bb9d4e555e075c641f2a0251e04372869cd99d67",
+      "meshes/waist_roll_link_rev_1_0.STL": "b67c347a05abc3e8ddae600d98a082bee273bb39f8e651647708b0a7140a8a97"
+    },
+    "ref_resolution": "git ls-remote master at download time; individual payload hashes verified by bootstrap"
+  },
+  "stilt_geometry": false,
+  "stilt_validation": null,
+  "git_revision_at_collection": "2a712c0a72b0ea5978bee3f1ff867c9fd6bbce8c",
+  "source_files_at_collection": {
+    "src/stilt_bot/tasks/unitree_reference/__init__.py": "1e6af16dab2449bb0fd1c165d86e8f509906958a6e1116bf9ec32d47b0c1c156",
+    "src/stilt_bot/tasks/unitree_reference/env_cfg.py": "1f80466df71c6c1b0bda7a4283436bb8dd81286c0a74580ac022f852a9ccb089",
+    "scripts/unitree_reference/train.sh": "df77474c689f955d1324876a8f5b1ae7cbda7dc19509dcecb4f9b0fad8cc7c57",
+    "scripts/unitree_reference/build_stilt_urdf.py": "5e0fbed1fe57991a8cbdb889afed27e3e4f7ceb0ec513a4c04a739bdb01598f6",
+    "scripts/unitree_reference/validate_stilt.py": "31e7a3d7bb26569ef051cd539a506c18ff26a4b90e2cfd9a04a38ca1ce31a216",
+    "scripts/unitree_reference/convert_dance.py": "7646dde904c21d830e2926ab566faec1d1988917029ff147af8a69e17e218568",
+    "scripts/unitree_reference/status.py": "6b87aa888e5e261209e1f3061a312a3c6f45b1c9695a2e912028901494c28fe0",
+    "scripts/unitree_reference/collect_milestone.py": "b2ad3b8ab525c2826b5baced7d313cd3d1e164f99aae282b18f87c1b061d83e1",
+    "scripts/unitree_reference/fetch_sources.py": "cbc29544bcdcf6c1f63f1aa11462c90ee6749ef78bdb7aa979c6bc0a39cffdc3",
+    "scripts/unitree_reference/run_suite.py": "9055a17009bbf712808e24b1a661a1523f5b2fe48d749b97c970b903bc36758f",
+    "scripts/unitree_reference/rollout.py": "b08b56b273ba7620c811af1c68d0c9c9c9537b501278d42ab61f05a8a1dab2f5",
+    "scripts/unitree_reference/runtime.sh": "05278d6dbc5735af76c25cf4f0ca1bc7fb5d9b1c69807c07832cc2a0332b58c6",
+    "scripts/unitree_reference/prepare_compat.py": "8070f5db3a14bb8c6cb9d242cdb119708b23b1d9616b476860c2f10ded2b9a25"
+  },
+  "boundary": "Training budget completion is separate from convergence, skill gate success and real-hardware validation."
+}

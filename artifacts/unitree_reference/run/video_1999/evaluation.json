@@ -1,0 +1,36 @@
+{
+  "task": "UnitreeRef-G1-29dof-Run-v0",
+  "checkpoint": "/data/\u8e29\u9ad8\u8df7/logs/rsl_rl/unitree_reference_run/2026-10-28_19-37-40_formal_unitree_ref_seed42/model_1999.pt",
+  "checkpoint_sha256": "6c60fa54a56280ad2d3aea82807281497b32e4820d8f39d6eb84f8b835404473",
+  "skill": "run",
+  "num_envs": 1,
+  "steps": 500,
+  "dt": 0.02,
+  "seed": 20261028,
+  "survival_rate": 1.0,
+  "fall_rate": 0.0,
+  "mean_speed_mps": 1.7821719646453857,
+  "forward_rmse_mps": 0.062253110110759735,
+  "p95_tilt_deg": 4.512251543998707,
+  "support_body_names": [
+    "left_ankle_roll_link",
+    "right_ankle_roll_link"
+  ],
+  "two_feet_unloaded_fraction": 0.2679324894514768,
+  "upstream_commit": "2522f89ab8ad6b1188b0368d122d16cb0e3cb8c8",
+  "runtime": "Isaac Lab 2.3 / Isaac Sim 5.1 / PhysX compatibility port",
+  "stilt_geometry": false,
+  "pushes": false,
+  "reference_replay": false,
+  "boundary": "One held-out seed, nominal fixed command/full dance clip; not hardware or broad robustness evidence.",
+  "flight_event_count": [
+    33
+  ],
+  "horizon_complete": false,
+  "gate": {
+    "definition": "30 s survival >=95%, speed RMSE <=0.25 m/s (run <=0.4); >=3 flight+landing events in >=80% environments",
+    "passed": false
+  },
+  "video": "/data/\u8e29\u9ad8\u8df7/artifacts/unitree_reference/run/video_1999/demo.mp4",
+  "video_sha256": "2a0cd9c902a26d805833f2f3b4e80976e6fc10bb2182d8548ab36964a75d9548"
+}

@@ -1,0 +1,84 @@
+{
+  "snapshot_type": "immutable first-milestone evidence; not live progress",
+  "run": "/data/\u8e29\u9ad8\u8df7/logs/rsl_rl/beyondmimic_dance/2026-10-29_00-33-16_formal_official_mdp_seed42_2026-10-29_00-33-12",
+  "training_task": "BeyondMimic-G1-29dof-Dance-v0",
+  "budget": 30000,
+  "num_envs": 4096,
+  "seed": 42,
+  "milestone": {
+    "video_exit_code": 0,
+    "video": "/data/\u8e29\u9ad8\u8df7/artifacts/beyondmimic/formal_official_mdp_seed42_2026-10-29_00-33-12/iteration_500/video/evaluation.json",
+    "checkpoint_sha256": "2d8d72764a821692de32eb95bd5dc9bb9dd39cae55d4dc6319df5262e556d914",
+    "video_sha256": "3148ef82c2dc97663d4b83e9e4c41383a0ccbe77eeb66de5dbf762f24aa11dbe"
+  },
+  "video_metadata": {
+    "width": 1280,
+    "height": 720,
+    "r_frame_rate": "50/1",
+    "nb_read_frames": "500"
+  },
+  "evaluation": {
+    "task": "BeyondMimic-G1-29dof-Dance-v0",
+    "checkpoint": "/data/\u8e29\u9ad8\u8df7/logs/rsl_rl/beyondmimic_dance/2026-10-29_00-33-16_formal_official_mdp_seed42_2026-10-29_00-33-12/model_500.pt",
+    "checkpoint_sha256": "2d8d72764a821692de32eb95bd5dc9bb9dd39cae55d4dc6319df5262e556d914",
+    "skill": "dance",
+    "num_envs": 1,
+    "steps": 500,
+    "dt": 0.02,
+    "seed": 20261028,
+    "survival_rate": 1.0,
+    "task_termination_rate": 0.0,
+    "mean_speed_mps": -0.02002774178981781,
+    "forward_rmse_mps": 0.0875895768404007,
+    "p95_tilt_deg": 10.495565509796139,
+    "support_body_names": [
+      "left_ankle_roll_link",
+      "right_ankle_roll_link"
+    ],
+    "two_feet_unloaded_fraction": 0.002109704641350211,
+    "upstream_commit": "9db915838b17785c6fec90c91fe80b95b147e1bd",
+    "runtime": "Isaac Lab 2.3 / Isaac Sim 5.1 / PhysX compatibility port",
+    "stilt_geometry": false,
+    "pushes": false,
+    "reference_replay": false,
+    "boundary": "One held-out seed, nominal fixed command/full dance clip; not hardware or broad robustness evidence.",
+    "flight_event_count": [
+      0
+    ],
+    "audit_version": "v2-pre-autoreset-snapshot-and-same-frame-reset-cache",
+    "reset_diagnostics": {
+      "before_refresh": {
+        "anchor_pos": 0,
+        "anchor_ori": 0,
+        "ee_body_pos": 0
+      },
+      "after_refresh": {
+        "anchor_pos": 0,
+        "anchor_ori": 0,
+        "ee_body_pos": 0
+      }
+    },
+    "termination_causes": {
+      "time_out": 0,
+      "anchor_pos": 0,
+      "anchor_ori": 0,
+      "ee_body_pos": 0
+    },
+    "first_failure_step": [
+      null
+    ],
+    "unprimed_reset_regression_control": false,
+    "joint_rmse_rad": 0.14317168295383453,
+    "body_position_mean_error_m": 0.04169975966215134,
+    "anchor_mean_error_m": 0.16711151599884033,
+    "reference_start_frame": 0,
+    "horizon_complete": false,
+    "gate": {
+      "definition": "Full-clip survival >=95%, per-joint RMSE <=0.3 rad, body position mean error <=0.15 m",
+      "passed": false
+    },
+    "video": "/data/\u8e29\u9ad8\u8df7/artifacts/beyondmimic/formal_official_mdp_seed42_2026-10-29_00-33-12/iteration_500/video/demo.mp4",
+    "video_sha256": "3148ef82c2dc97663d4b83e9e4c41383a0ccbe77eeb66de5dbf762f24aa11dbe"
+  },
+  "boundary": "Checkpoint 500 only; 1-env 10-second rollout is not full-clip or final convergence evidence."
+}

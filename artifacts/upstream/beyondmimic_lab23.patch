@@ -1,0 +1,135 @@
+--- a/__init__.py
++++ b/__init__.py
+@@ -1,6 +1 @@
+-"""
+-Python module serving as a project/extension template.
+-"""
+-
+-# Register Gym environments.
+-from .tasks import *
++"""Pinned official source; registration is project-owned."""
+--- a/tasks/__init__.py
++++ b/tasks/__init__.py
+@@ -1,13 +1 @@
+-"""Package containing task implementations for various robotic environments."""
+-
+-from isaaclab_tasks.utils import import_packages
+-
+-##
+-# Register Gym environments.
+-##
+-
+-
+-# The blacklist is used to prevent importing configs from sub-packages
+-_BLACKLIST_PKGS = ["utils"]
+-# Import all configs in this package
+-import_packages(__name__, _BLACKLIST_PKGS)
++"""Pinned official source; registration is project-owned."""
+--- a/tasks/tracking/tracking_env_cfg.py
++++ b/tasks/tracking/tracking_env_cfg.py
+@@ -19,7 +19,7 @@
+ # Pre-defined configs
+ ##
+ from isaaclab.utils import configclass
+-from isaaclab.utils.noise import AdditiveUniformNoiseCfg as Unoise
++from isaaclab.utils.noise import UniformNoiseCfg as Unoise
+ 
+ import whole_body_tracking.tasks.tracking.mdp as mdp
+ 
+--- a/tasks/tracking/mdp/terminations.py
++++ b/tasks/tracking/mdp/terminations.py
+@@ -31,9 +31,9 @@
+     asset: RigidObject | Articulation = env.scene[asset_cfg.name]
+ 
+     command: MotionCommand = env.command_manager.get_term(command_name)
+-    motion_projected_gravity_b = math_utils.quat_rotate_inverse(command.anchor_quat_w, asset.data.GRAVITY_VEC_W)
++    motion_projected_gravity_b = math_utils.quat_apply_inverse(command.anchor_quat_w, asset.data.GRAVITY_VEC_W)
+ 
+-    robot_projected_gravity_b = math_utils.quat_rotate_inverse(command.robot_anchor_quat_w, asset.data.GRAVITY_VEC_W)
++    robot_projected_gravity_b = math_utils.quat_apply_inverse(command.robot_anchor_quat_w, asset.data.GRAVITY_VEC_W)
+ 
+     return (motion_projected_gravity_b[:, 2] - robot_projected_gravity_b[:, 2]).abs() > threshold
+ 
+--- a/tasks/tracking/config/humanoid/__init__.py
++++ b/tasks/tracking/config/humanoid/__init__.py
+@@ -1,37 +1 @@
+-import gymnasium as gym
+-
+-from . import agents, flat_env_cfg
+-
+-##
+-# Register Gym environments.
+-##
+-
+-gym.register(
+-    id="Tracking-Flat-Walk-Humanoid-v0",
+-    entry_point="isaaclab.envs:ManagerBasedRLEnv",
+-    disable_env_checker=True,
+-    kwargs={
+-        "env_cfg_entry_point": flat_env_cfg.HumanoidFlatWalkEnvCfg,
+-        "rsl_rl_cfg_entry_point": f"{agents.__name__}.rsl_rl_ppo_cfg:HumanoidFlatPPORunnerCfg",
+-    },
+-)
+-
+-gym.register(
+-    id="Tracking-Flat-WalkBack-Humanoid-v0",
+-    entry_point="isaaclab.envs:ManagerBasedRLEnv",
+-    disable_env_checker=True,
+-    kwargs={
+-        "env_cfg_entry_point": flat_env_cfg.HumanoidFlatWalkBackEnvCfg,
+-        "rsl_rl_cfg_entry_point": f"{agents.__name__}.rsl_rl_ppo_cfg:HumanoidFlatPPORunnerCfg",
+-    },
+-)
+-
+-gym.register(
+-    id="Tracking-Flat-WalkBox-Humanoid-v0",
+-    entry_point="isaaclab.envs:ManagerBasedRLEnv",
+-    disable_env_checker=True,
+-    kwargs={
+-        "env_cfg_entry_point": flat_env_cfg.HumanoidFlatWalkBoxEnvCfg,
+-        "rsl_rl_cfg_entry_point": f"{agents.__name__}.rsl_rl_ppo_cfg:HumanoidFlatPPORunnerCfg",
+-    },
+-)
++"""Pinned official source; registration is project-owned."""
+--- a/tasks/tracking/config/g1/__init__.py
++++ b/tasks/tracking/config/g1/__init__.py
+@@ -1,38 +1 @@
+-import gymnasium as gym
+-
+-from . import agents, flat_env_cfg
+-
+-##
+-# Register Gym environments.
+-##
+-
+-gym.register(
+-    id="Tracking-Flat-G1-v0",
+-    entry_point="isaaclab.envs:ManagerBasedRLEnv",
+-    disable_env_checker=True,
+-    kwargs={
+-        "env_cfg_entry_point": flat_env_cfg.G1FlatEnvCfg,
+-        "rsl_rl_cfg_entry_point": f"{agents.__name__}.rsl_rl_ppo_cfg:G1FlatPPORunnerCfg",
+-    },
+-)
+-
+-gym.register(
+-    id="Tracking-Flat-G1-Wo-State-Estimation-v0",
+-    entry_point="isaaclab.envs:ManagerBasedRLEnv",
+-    disable_env_checker=True,
+-    kwargs={
+-        "env_cfg_entry_point": flat_env_cfg.G1FlatWoStateEstimationEnvCfg,
+-        "rsl_rl_cfg_entry_point": f"{agents.__name__}.rsl_rl_ppo_cfg:G1FlatPPORunnerCfg",
+-    },
+-)
+-
+-
+-gym.register(
+-    id="Tracking-Flat-G1-Low-Freq-v0",
+-    entry_point="isaaclab.envs:ManagerBasedRLEnv",
+-    disable_env_checker=True,
+-    kwargs={
+-        "env_cfg_entry_point": flat_env_cfg.G1FlatLowFreqEnvCfg,
+-        "rsl_rl_cfg_entry_point": f"{agents.__name__}.rsl_rl_ppo_cfg:G1FlatLowFreqPPORunnerCfg",
+-    },
+-)
++"""Pinned official source; registration is project-owned."""

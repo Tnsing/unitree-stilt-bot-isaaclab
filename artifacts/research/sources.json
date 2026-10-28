@@ -1,0 +1,111 @@
+{
+  "beyondmimic_project": {
+    "url": "https://beyondmimic.github.io/",
+    "status": 200,
+    "sha256": "850619b809f06dbb8e50feb1a5be8cc35df1a955e680c5a39c181c2c07896a2c",
+    "bytes": 21878,
+    "retrieved_at": "2026-10-28T16:28:40.946006+00:00"
+  },
+  "beyondmimic_paper": {
+    "url": "https://arxiv.org/html/2508.08241",
+    "status": 200,
+    "sha256": "85b2e582ed8f70c9e8de15b9ab187aa6a4cd4f63cce564f4922a314911eab252",
+    "bytes": 465237,
+    "retrieved_at": "2026-10-28T16:28:48.401353+00:00"
+  },
+  "mimickit_readme": {
+    "url": "https://raw.githubusercontent.com/xbpeng/MimicKit/main/README.md",
+    "status": 200,
+    "sha256": "dc6841da6854b3594a4b408e83ee604469e3f4690e12098c37a839040c342dac",
+    "bytes": 8149,
+    "retrieved_at": "2026-10-28T16:28:23.173461+00:00"
+  },
+  "mimickit_paper": {
+    "url": "https://arxiv.org/html/2510.13794",
+    "status": 200,
+    "sha256": "16eb688e67cc5909d1f6eaca9c96676ff58c688c71578e419bfbd0761a3efdda",
+    "bytes": 226281,
+    "retrieved_at": "2026-10-28T16:28:39.178041+00:00"
+  },
+  "beamdojo_project": {
+    "url": "https://why618188.github.io/beamdojo/",
+    "status": 200,
+    "sha256": "4228c9ec5a9463dff0fcac34e31687ee2e4385c3dc38204f3a83cce7d2932d00",
+    "bytes": 20189,
+    "retrieved_at": "2026-10-28T16:28:35.853281+00:00"
+  },
+  "beamdojo_paper": {
+    "url": "https://arxiv.org/html/2502.10363",
+    "status": 200,
+    "sha256": "4507a1610602da3a99e1c7294c13dca48b0b9be9db941273d01e85e464542d1c",
+    "bytes": 409135,
+    "retrieved_at": "2026-10-28T16:28:39.559342+00:00"
+  },
+  "sonic_readme": {
+    "url": "https://raw.githubusercontent.com/NVlabs/GR00T-WholeBodyControl/main/README.md",
+    "status": 200,
+    "sha256": "06ebe5390939368b7dca40511474e3916a7d3bc901586e0ee14027beb16a18ab",
+    "bytes": 24816,
+    "retrieved_at": "2026-10-28T16:28:30.041329+00:00"
+  },
+  "gmr_readme": {
+    "url": "https://raw.githubusercontent.com/YanjieZe/GMR/main/README.md",
+    "error": "<HTTPError 404: 'Not Found'>"
+  },
+  "stilt_search": {
+    "url": "https://export.arxiv.org/api/query?search_query=all:%22Stilt-bot%22&max_results=5",
+    "status": 200,
+    "sha256": "0199e2925d4ff6158b9b34ef195c696cb653b6c878a21084644df299e912b729",
+    "bytes": 705,
+    "retrieved_at": "2026-10-28T16:28:53.647232+00:00"
+  },
+  "supermimic_project": {
+    "url": "https://supermimic.github.io/",
+    "status": 200,
+    "bytes": 39930,
+    "sha256": "12ef8489aedd405b2fc7f81f6aabbe0825cf3907a91e49ddd729db0300590f5b",
+    "retrieved_at": "2026-10-28T16:45:36.212897+00:00"
+  },
+  "supermimic_paper": {
+    "url": "https://arxiv.org/html/2610.28480",
+    "error": "<HTTPError 404: 'Not Found'>",
+    "note": "arXiv HTML unavailable; PDF and abstract successfully retrieved separately"
+  },
+  "mimicall_paper": {
+    "url": "https://arxiv.org/html/2610.33508",
+    "status": 200,
+    "bytes": 306165,
+    "sha256": "52cc310343ec4ea853971bea62a6f1efc879b2c9e6ec5f8da3177460e9d40e97",
+    "retrieved_at": "2026-10-28T16:45:32.340178+00:00"
+  },
+  "stilt_crossref": {
+    "url": "https://api.crossref.org/works?query.title=A+Simplified+Underactuated+Platform+for+AI-Ready+Bipedal+Walking+Control%3A+The+Stilt-bot&rows=3",
+    "status": 200,
+    "sha256": "2137856ec8dd9a1cb3a5871059df4eed951fd9f262c2fb98f1b8064edfe8964b",
+    "bytes": 14102
+  },
+  "gmr_master": {
+    "url": "https://raw.githubusercontent.com/YanjieZe/GMR/master/README.md",
+    "status": 200,
+    "sha256": "7507511b6a6cc36cbf54a68938a9dc2367ca8d911874124d65bd1a3d7be6179a",
+    "bytes": 30933
+  },
+  "mjlab_readme": {
+    "url": "https://raw.githubusercontent.com/mujocolab/mjlab/main/README.md",
+    "status": 200,
+    "sha256": "467f5961217f10f0b38dac4c40065cf59ba3b6a286917a7a0c0c26562ad1fe37",
+    "bytes": 5345
+  },
+  "supermimic_abstract": {
+    "url": "https://arxiv.org/abs/2610.28480",
+    "sha256": "66941feb2b3924f3957c2be0163386b69fbf3bf491e63d5e3dabd149a3ba7529",
+    "bytes": 43108,
+    "retrieved_at": "2026-10-28T16:50:02.354500+00:00"
+  },
+  "supermimic_paper_pdf": {
+    "url": "https://arxiv.org/pdf/2610.28480",
+    "sha256": "fe213017ab062f4acc3965da89abd3c29969163e144a2628a662b8ce46691009",
+    "bytes": 3524904,
+    "retrieved_at": "2026-10-28T16:51:01.886876+00:00"
+  }
+}

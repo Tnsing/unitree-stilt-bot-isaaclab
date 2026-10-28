@@ -1,0 +1,67 @@
+{
+  "task": "BeyondMimic-G1-29dof-Dance-v0",
+  "checkpoint": "/data/\u8e29\u9ad8\u8df7/logs/rsl_rl/beyondmimic_dance/2026-10-29_00-33-16_formal_official_mdp_seed42_2026-10-29_00-33-12/model_0.pt",
+  "checkpoint_sha256": "245d5f0e952280b36eaaf6deab4bcefed3436c9aa4c44de8eac202ff03cf53a9",
+  "skill": "dance",
+  "num_envs": 4,
+  "steps": 100,
+  "dt": 0.02,
+  "seed": 20261028,
+  "survival_rate": 0.0,
+  "task_termination_rate": 1.0,
+  "mean_speed_mps": 0.6566620469093323,
+  "forward_rmse_mps": 0.6744952201843262,
+  "p95_tilt_deg": 32.419308471679656,
+  "support_body_names": [
+    "left_ankle_roll_link",
+    "right_ankle_roll_link"
+  ],
+  "two_feet_unloaded_fraction": 0.0,
+  "upstream_commit": "9db915838b17785c6fec90c91fe80b95b147e1bd",
+  "runtime": "Isaac Lab 2.3 / Isaac Sim 5.1 / PhysX compatibility port",
+  "stilt_geometry": false,
+  "pushes": false,
+  "reference_replay": false,
+  "boundary": "One held-out seed, nominal fixed command/full dance clip; not hardware or broad robustness evidence.",
+  "flight_event_count": [
+    0,
+    0,
+    0,
+    0
+  ],
+  "audit_version": "v2-pre-autoreset-snapshot-and-same-frame-reset-cache",
+  "reset_diagnostics": {
+    "before_refresh": {
+      "anchor_pos": 0,
+      "anchor_ori": 0,
+      "ee_body_pos": 0
+    },
+    "after_refresh": {
+      "anchor_pos": 0,
+      "anchor_ori": 0,
+      "ee_body_pos": 0
+    }
+  },
+  "termination_causes": {
+    "time_out": 0,
+    "anchor_pos": 0,
+    "anchor_ori": 0,
+    "ee_body_pos": 4
+  },
+  "first_failure_step": [
+    50,
+    50,
+    51,
+    52
+  ],
+  "unprimed_reset_regression_control": false,
+  "joint_rmse_rad": 0.25665155053138733,
+  "body_position_mean_error_m": 0.14865721762180328,
+  "anchor_mean_error_m": 0.3049595355987549,
+  "reference_start_frame": 0,
+  "horizon_complete": false,
+  "gate": {
+    "definition": "Full-clip survival >=95%, per-joint RMSE <=0.3 rad, body position mean error <=0.15 m",
+    "passed": false
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "reference_only": true,
+  "sha256_verified": true,
+  "frames": 1457,
+  "fps": 50,
+  "num_joints": 29,
+  "num_bodies": 37,
+  "joint_mapping_max_abs_error_rad": 2.0657444000260483e-05,
+  "body_quaternion_max_norm_error": 5.960464477539062e-07,
+  "body_lin_vel_vs_finite_difference_rmse_mps": 0.09044276922941208,
+  "all_finite": true,
+  "passed": true
+}
