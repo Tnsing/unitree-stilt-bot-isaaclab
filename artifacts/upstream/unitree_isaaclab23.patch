@@ -1,0 +1,904 @@
+--- upstream/__init__.py
++++ compat/__init__.py
+@@ -0,0 +1 @@
++"""Pinned Unitree package; project registers explicitly selected PhysX tasks."""
+
+--- upstream/utils/export_deploy_cfg.py
++++ compat/utils/export_deploy_cfg.py
+@@ -2,6 +2,7 @@
+ import os
+ import yaml
+ 
++from unitree_rl_lab.compat_tensor import tensor as as_torch
+ import warp as wp
+ 
+ from isaaclab.assets import Articulation
+@@ -41,12 +42,12 @@
+     cfg["joint_ids_map"] = joint_ids_map
+     cfg["step_dt"] = env.cfg.sim.dt * env.cfg.decimation
+     stiffness = np.zeros(len(joint_sdk_names))
+-    stiffness[joint_ids_map] = wp.to_torch(asset.data.default_joint_stiffness)[0].detach().cpu().numpy().tolist()
++    stiffness[joint_ids_map] = as_torch(asset.data.default_joint_stiffness)[0].detach().cpu().numpy().tolist()
+     cfg["stiffness"] = stiffness.tolist()
+     damping = np.zeros(len(joint_sdk_names))
+-    damping[joint_ids_map] = wp.to_torch(asset.data.default_joint_damping)[0].detach().cpu().numpy().tolist()
++    damping[joint_ids_map] = as_torch(asset.data.default_joint_damping)[0].detach().cpu().numpy().tolist()
+     cfg["damping"] = damping.tolist()
+-    cfg["default_joint_pos"] = wp.to_torch(asset.data.default_joint_pos)[0].detach().cpu().numpy().tolist()
++    cfg["default_joint_pos"] = as_torch(asset.data.default_joint_pos)[0].detach().cpu().numpy().tolist()
+     return cfg, asset
+ 
+ 
+
+--- upstream/tasks/__init__.py
++++ compat/tasks/__init__.py
+@@ -1,10 +1 @@
+-##
+-# Register Gym environments.
+-##
+-
+-from isaaclab_tasks.utils import import_packages
+-
+-# The blacklist is used to prevent importing configs from sub-packages
+-_BLACKLIST_PKGS = []
+-# Import all configs in this package
+-import_packages(__name__, _BLACKLIST_PKGS)
++"""Pinned Unitree package; project registers explicitly selected PhysX tasks."""
+
+--- upstream/tasks/mimic/__init__.py
++++ compat/tasks/mimic/__init__.py
+@@ -0,0 +1 @@
++"""Pinned Unitree package; project registers explicitly selected PhysX tasks."""
+
+--- upstream/tasks/mimic/mdp/events.py
++++ compat/tasks/mimic/mdp/events.py
+@@ -1,6 +1,7 @@
+ from __future__ import annotations
+ 
+ import torch
++from unitree_rl_lab.compat_tensor import tensor as as_torch
+ import warp as wp
+ from typing import TYPE_CHECKING, Literal
+ 
+@@ -28,7 +29,7 @@
+     asset: Articulation = env.scene[asset_cfg.name]
+ 
+     # save nominal value for export
+-    asset.data.default_joint_pos_nominal = wp.to_torch(asset.data.default_joint_pos)[0].clone()
++    asset.data.default_joint_pos_nominal = as_torch(asset.data.default_joint_pos)[0].clone()
+ 
+     # resolve environment ids
+     if env_ids is None:
+@@ -41,54 +42,16 @@
+         joint_ids = torch.tensor(asset_cfg.joint_ids, dtype=torch.int, device=asset.device)
+ 
+     if pos_distribution_params is not None:
+-        pos = wp.to_torch(asset.data.default_joint_pos).clone()
++        pos = as_torch(asset.data.default_joint_pos).clone()
+         pos = _randomize_prop_by_op(
+             pos, pos_distribution_params, env_ids, joint_ids, operation=operation, distribution=distribution
+         )[env_ids][:, joint_ids]
+ 
+         if env_ids != slice(None) and joint_ids != slice(None):
+             env_ids = env_ids[:, None]
+-        wp.to_torch(asset.data.default_joint_pos)[env_ids, joint_ids] = pos
++        as_torch(asset.data.default_joint_pos)[env_ids, joint_ids] = pos
+         # update the offset in action since it is not updated automatically
+         env.action_manager.get_term("JointPositionAction")._offset[env_ids, joint_ids] = pos
+ 
+ 
+-def randomize_rigid_body_com(
+-    env: ManagerBasedEnv,
+-    env_ids: torch.Tensor | None,
+-    com_range: dict[str, tuple[float, float]],
+-    asset_cfg: SceneEntityCfg,
+-):
+-    """Randomize the center of mass (CoM) of rigid bodies by adding a random value sampled from the given ranges.
+-
+-    .. note::
+-        This function uses CPU tensors to assign the CoM. It is recommended to use this function
+-        only during the initialization of the environment.
+-    """
+-    # extract the used quantities (to enable type-hinting)
+-    asset: Articulation = env.scene[asset_cfg.name]
+-    # resolve environment ids
+-    if env_ids is None:
+-        env_ids = torch.arange(env.scene.num_envs, device="cpu")
+-    else:
+-        env_ids = env_ids.cpu()
+-
+-    # resolve body indices
+-    if asset_cfg.body_ids == slice(None):
+-        body_ids = torch.arange(asset.num_bodies, dtype=torch.int, device="cpu")
+-    else:
+-        body_ids = torch.tensor(asset_cfg.body_ids, dtype=torch.int, device="cpu")
+-
+-    # sample random CoM values
+-    range_list = [com_range.get(key, (0.0, 0.0)) for key in ["x", "y", "z"]]
+-    ranges = torch.tensor(range_list, device="cpu")
+-    rand_samples = math_utils.sample_uniform(ranges[:, 0], ranges[:, 1], (len(env_ids), 3), device="cpu").unsqueeze(1)
+-
+-    # get the current com of the bodies (num_assets, num_bodies)
+-    coms = wp.to_torch(asset.root_view.get_coms()).clone()
+-
+-    # Randomize the com in range
+-    coms[:, body_ids, :3] += rand_samples
+-
+-    # Set the new coms
+-    asset.root_view.set_coms(wp.from_torch(coms.contiguous()), wp.from_torch(env_ids.int().contiguous()))
++from isaaclab.envs.mdp import randomize_rigid_body_com
+
+--- upstream/tasks/mimic/mdp/terminations.py
++++ compat/tasks/mimic/mdp/terminations.py
+@@ -1,6 +1,7 @@
+ from __future__ import annotations
+ 
+ import torch
++from unitree_rl_lab.compat_tensor import tensor as as_torch
+ import warp as wp
+ from typing import TYPE_CHECKING
+ 
+@@ -36,7 +37,7 @@
+     asset: RigidObject | Articulation = env.scene[asset_cfg.name]
+ 
+     command: MotionCommand = env.command_manager.get_term(command_name)
+-    gravity_vec_w = wp.to_torch(asset.data.GRAVITY_VEC_W)
++    gravity_vec_w = as_torch(asset.data.GRAVITY_VEC_W)
+     motion_projected_gravity_b = quat_apply_inverse(command.anchor_quat_w, gravity_vec_w)
+     robot_projected_gravity_b = quat_apply_inverse(command.robot_anchor_quat_w, gravity_vec_w)
+ 
+
+--- upstream/tasks/mimic/mdp/rewards.py
++++ compat/tasks/mimic/mdp/rewards.py
+@@ -1,6 +1,7 @@
+ from __future__ import annotations
+ 
+ import torch
++from unitree_rl_lab.compat_tensor import tensor as as_torch
+ import warp as wp
+ from typing import TYPE_CHECKING
+ 
+@@ -77,7 +78,7 @@
+ 
+ def feet_contact_time(env: ManagerBasedRLEnv, sensor_cfg: SceneEntityCfg, threshold: float) -> torch.Tensor:
+     contact_sensor: ContactSensor = env.scene.sensors[sensor_cfg.name]
+-    first_air = wp.to_torch(contact_sensor.compute_first_air(env.step_dt, env.physics_dt))[:, sensor_cfg.body_ids]
+-    last_contact_time = wp.to_torch(contact_sensor.data.last_contact_time)[:, sensor_cfg.body_ids]
++    first_air = as_torch(contact_sensor.compute_first_air(env.step_dt, env.physics_dt))[:, sensor_cfg.body_ids]
++    last_contact_time = as_torch(contact_sensor.data.last_contact_time)[:, sensor_cfg.body_ids]
+     reward = torch.sum((last_contact_time < threshold) * first_air, dim=-1)
+     return reward
+
+--- upstream/tasks/mimic/mdp/commands.py
++++ compat/tasks/mimic/mdp/commands.py
+@@ -4,6 +4,7 @@
+ import numpy as np
+ import os
+ import torch
++from unitree_rl_lab.compat_tensor import tensor as as_torch
+ import warp as wp
+ from collections.abc import Sequence
+ from dataclasses import MISSING
+@@ -76,7 +77,7 @@
+         self.time_steps = torch.zeros(self.num_envs, dtype=torch.long, device=self.device)
+         self.body_pos_relative_w = torch.zeros(self.num_envs, len(cfg.body_names), 3, device=self.device)
+         self.body_quat_relative_w = torch.zeros(self.num_envs, len(cfg.body_names), 4, device=self.device)
+-        self.body_quat_relative_w[:, :, 3] = 1.0  # XYZW format: w is at index 3
++        self.body_quat_relative_w[:, :, 0] = 1.0  # Isaac Lab 2.3 uses WXYZ
+ 
+         self.bin_count = int(self.motion.time_step_total // (1 / (env.cfg.decimation * env.cfg.sim.dt))) + 1
+         self.bin_failed_count = torch.zeros(self.bin_count, dtype=torch.float, device=self.device)
+@@ -144,49 +145,49 @@
+ 
+     @property
+     def robot_joint_pos(self) -> torch.Tensor:
+-        return wp.to_torch(self.robot.data.joint_pos)
++        return as_torch(self.robot.data.joint_pos)
+ 
+     @property
+     def robot_joint_vel(self) -> torch.Tensor:
+-        return wp.to_torch(self.robot.data.joint_vel)
++        return as_torch(self.robot.data.joint_vel)
+ 
+     @property
+     def robot_body_pos_w(self) -> torch.Tensor:
+-        return wp.to_torch(self.robot.data.body_pos_w)[:, self.body_indexes]
++        return as_torch(self.robot.data.body_pos_w)[:, self.body_indexes]
+ 
+     @property
+     def robot_body_quat_w(self) -> torch.Tensor:
+-        return wp.to_torch(self.robot.data.body_quat_w)[:, self.body_indexes]
++        return as_torch(self.robot.data.body_quat_w)[:, self.body_indexes]
+ 
+     @property
+     def robot_body_lin_vel_w(self) -> torch.Tensor:
+-        return wp.to_torch(self.robot.data.body_lin_vel_w)[:, self.body_indexes]
++        return as_torch(self.robot.data.body_lin_vel_w)[:, self.body_indexes]
+ 
+     @property
+     def robot_body_ang_vel_w(self) -> torch.Tensor:
+-        return wp.to_torch(self.robot.data.body_ang_vel_w)[:, self.body_indexes]
++        return as_torch(self.robot.data.body_ang_vel_w)[:, self.body_indexes]
+ 
+     @property
+     def robot_anchor_pos_w(self) -> torch.Tensor:
+-        return wp.to_torch(self.robot.data.body_pos_w)[:, self.robot_anchor_body_index]
++        return as_torch(self.robot.data.body_pos_w)[:, self.robot_anchor_body_index]
+ 
+     @property
+     def robot_anchor_quat_w(self) -> torch.Tensor:
+-        return wp.to_torch(self.robot.data.body_quat_w)[:, self.robot_anchor_body_index]
++        return as_torch(self.robot.data.body_quat_w)[:, self.robot_anchor_body_index]
+ 
+     @property
+     def robot_anchor_lin_vel_w(self) -> torch.Tensor:
+-        return wp.to_torch(self.robot.data.body_lin_vel_w)[:, self.robot_anchor_body_index]
++        return as_torch(self.robot.data.body_lin_vel_w)[:, self.robot_anchor_body_index]
+ 
+     @property
+     def robot_anchor_ang_vel_w(self) -> torch.Tensor:
+-        return wp.to_torch(self.robot.data.body_ang_vel_w)[:, self.robot_anchor_body_index]
++        return as_torch(self.robot.data.body_ang_vel_w)[:, self.robot_anchor_body_index]
+ 
+     @property
+     def robot_anchor_vel_w(self) -> torch.Tensor:
+         return torch.cat([
+-            wp.to_torch(self.robot.data.body_lin_vel_w)[:, self.robot_anchor_body_index],
+-            wp.to_torch(self.robot.data.body_ang_vel_w)[:, self.robot_anchor_body_index],
++            as_torch(self.robot.data.body_lin_vel_w)[:, self.robot_anchor_body_index],
++            as_torch(self.robot.data.body_ang_vel_w)[:, self.robot_anchor_body_index],
+         ], dim=-1)
+ 
+     def _update_metrics(self):
+@@ -274,17 +275,17 @@
+         joint_vel = self.joint_vel.clone()
+ 
+         joint_pos += sample_uniform(*self.cfg.joint_position_range, joint_pos.shape, joint_pos.device)
+-        soft_joint_pos_limits = wp.to_torch(self.robot.data.soft_joint_pos_limits)[env_ids]
++        soft_joint_pos_limits = as_torch(self.robot.data.soft_joint_pos_limits)[env_ids]
+         joint_pos[env_ids] = torch.clip(
+             joint_pos[env_ids], soft_joint_pos_limits[:, :, 0], soft_joint_pos_limits[:, :, 1]
+         )
+-        self.robot.write_joint_position_to_sim_index(position=joint_pos[env_ids], env_ids=env_ids)
+-        self.robot.write_joint_velocity_to_sim_index(velocity=joint_vel[env_ids], env_ids=env_ids)
+-        self.robot.write_root_pose_to_sim_index(
++        self.robot.write_joint_position_to_sim(position=joint_pos[env_ids], env_ids=env_ids)
++        self.robot.write_joint_velocity_to_sim(velocity=joint_vel[env_ids], env_ids=env_ids)
++        self.robot.write_root_pose_to_sim(
+             root_pose=torch.cat([root_pos[env_ids], root_ori[env_ids]], dim=-1),
+             env_ids=env_ids,
+         )
+-        self.robot.write_root_velocity_to_sim_index(
++        self.robot.write_root_velocity_to_sim(
+             root_velocity=torch.cat([root_lin_vel[env_ids], root_ang_vel[env_ids]], dim=-1),
+             env_ids=env_ids,
+         )
+
+--- upstream/tasks/mimic/robots/__init__.py
++++ compat/tasks/mimic/robots/__init__.py
+@@ -0,0 +1 @@
++"""Pinned Unitree package; project registers explicitly selected PhysX tasks."""
+
+--- upstream/tasks/mimic/robots/g1_29dof/__init__.py
++++ compat/tasks/mimic/robots/g1_29dof/__init__.py
+@@ -0,0 +1 @@
++"""Pinned Unitree package; project registers explicitly selected PhysX tasks."""
+
+--- upstream/tasks/mimic/robots/g1_29dof/gangnanm_style/tracking_env_cfg.py
++++ compat/tasks/mimic/robots/g1_29dof/gangnanm_style/tracking_env_cfg.py
+@@ -20,7 +20,7 @@
+ ##
+ from isaaclab.utils import configclass
+ from isaaclab.utils.noise import UniformNoiseCfg as Unoise
+-from isaaclab_physx.physics import PhysxCfg
++from isaaclab.sim import PhysxCfg
+ 
+ import unitree_rl_lab.tasks.mimic.mdp as mdp
+ from unitree_rl_lab.assets.robots.unitree import UNITREE_G1_29DOF_MIMIC_ACTION_SCALE
+@@ -335,7 +335,7 @@
+         self.sim.dt = 0.005
+         self.sim.render_interval = self.decimation
+         self.sim.physics_material = self.scene.terrain.physics_material
+-        self.sim.physics = PhysxCfg(gpu_max_rigid_patch_count=10 * 2**15)
++        self.sim.physx = PhysxCfg(gpu_max_rigid_patch_count=10 * 2**15)
+ 
+ 
+ class RobotPlayEnvCfg(RobotEnvCfg):
+
+--- upstream/tasks/mimic/robots/g1_29dof/gangnanm_style/__init__.py
++++ compat/tasks/mimic/robots/g1_29dof/gangnanm_style/__init__.py
+@@ -1,12 +1 @@
+-import gymnasium as gym
+-
+-gym.register(
+-    id="Unitree-G1-29dof-Mimic-Gangnanm-Style",
+-    entry_point="isaaclab.envs:ManagerBasedRLEnv",
+-    disable_env_checker=True,
+-    kwargs={
+-        "env_cfg_entry_point": f"{__name__}.tracking_env_cfg:RobotEnvCfg",
+-        "play_env_cfg_entry_point": f"{__name__}.tracking_env_cfg:RobotPlayEnvCfg",
+-        "rsl_rl_cfg_entry_point": f"unitree_rl_lab.tasks.mimic.agents.rsl_rl_ppo_cfg:BasePPORunnerCfg",
+-    },
+-)
++"""Pinned Unitree package; project registers explicitly selected PhysX tasks."""
+
+--- upstream/tasks/mimic/robots/g1_29dof/dance_102/tracking_env_cfg.py
++++ compat/tasks/mimic/robots/g1_29dof/dance_102/tracking_env_cfg.py
+@@ -20,7 +20,7 @@
+ ##
+ from isaaclab.utils import configclass
+ from isaaclab.utils.noise import UniformNoiseCfg as Unoise
+-from isaaclab_physx.physics import PhysxCfg
++from isaaclab.sim import PhysxCfg
+ 
+ import unitree_rl_lab.tasks.mimic.mdp as mdp
+ from unitree_rl_lab.assets.robots.unitree import UNITREE_G1_29DOF_MIMIC_ACTION_SCALE
+@@ -335,7 +335,7 @@
+         self.sim.dt = 0.005
+         self.sim.render_interval = self.decimation
+         self.sim.physics_material = self.scene.terrain.physics_material
+-        self.sim.physics = PhysxCfg(gpu_max_rigid_patch_count=10 * 2**15)
++        self.sim.physx = PhysxCfg(gpu_max_rigid_patch_count=10 * 2**15)
+ 
+ 
+ class RobotPlayEnvCfg(RobotEnvCfg):
+
+--- upstream/tasks/mimic/robots/g1_29dof/dance_102/__init__.py
++++ compat/tasks/mimic/robots/g1_29dof/dance_102/__init__.py
+@@ -1,12 +1 @@
+-import gymnasium as gym
+-
+-gym.register(
+-    id="Unitree-G1-29dof-Mimic-Dance-102",
+-    entry_point="isaaclab.envs:ManagerBasedRLEnv",
+-    disable_env_checker=True,
+-    kwargs={
+-        "env_cfg_entry_point": f"{__name__}.tracking_env_cfg:RobotEnvCfg",
+-        "play_env_cfg_entry_point": f"{__name__}.tracking_env_cfg:RobotPlayEnvCfg",
+-        "rsl_rl_cfg_entry_point": f"unitree_rl_lab.tasks.mimic.agents.rsl_rl_ppo_cfg:BasePPORunnerCfg",
+-    },
+-)
++"""Pinned Unitree package; project registers explicitly selected PhysX tasks."""
+
+--- upstream/tasks/mimic/agents/__init__.py
++++ compat/tasks/mimic/agents/__init__.py
+@@ -0,0 +1 @@
++"""Pinned Unitree package; project registers explicitly selected PhysX tasks."""
+
+--- upstream/tasks/locomotion/__init__.py
++++ compat/tasks/locomotion/__init__.py
+@@ -1 +1 @@
+-from .robots import *
++"""Pinned Unitree package; project registers explicitly selected PhysX tasks."""
+
+--- upstream/tasks/locomotion/mdp/events.py
++++ compat/tasks/locomotion/mdp/events.py
+@@ -18,6 +18,7 @@
+ from typing import TYPE_CHECKING
+ 
+ import torch
++from unitree_rl_lab.compat_tensor import tensor as as_torch
+ import warp as wp
+ import isaaclab.utils.math as math_utils
+ 
+@@ -108,8 +109,8 @@
+         re_lo, re_hi, (len(env_ids), n_shapes), device=device
+     )
+ 
+-    friction_view = wp.to_torch(friction_binding)
+-    restitution_view = wp.to_torch(restitution_binding)
++    friction_view = as_torch(friction_binding)
++    restitution_view = as_torch(restitution_binding)
+     shape_idx = torch.arange(n_shapes, dtype=torch.long, device=device)
+     friction_view[env_ids[:, None], shape_idx] = friction_samples
+     restitution_view[env_ids[:, None], shape_idx] = restitution_samples
+@@ -121,6 +122,6 @@
+     # Assumes the ground is shape index 0 (true for ``TerrainImporterCfg``
+     # which inserts the ground prim before any robot prims).
+     if hasattr(model, "mujoco") and getattr(model.mujoco, "geom_solmix", None) is not None:
+-        wp.to_torch(model.mujoco.geom_solmix)[0] = 0.0
++        as_torch(model.mujoco.geom_solmix)[0] = 0.0
+ 
+     newton_manager_module.NewtonManager.add_model_change(SolverNotifyFlags.SHAPE_PROPERTIES)
+
+--- upstream/tasks/locomotion/mdp/rewards.py
++++ compat/tasks/locomotion/mdp/rewards.py
+@@ -1,6 +1,7 @@
+ from __future__ import annotations
+ 
+ import torch
++from unitree_rl_lab.compat_tensor import tensor as as_torch
+ import warp as wp
+ from typing import TYPE_CHECKING
+ 
+@@ -24,8 +25,8 @@
+     """Penalize the energy used by the robot's joints."""
+     asset: Articulation = env.scene[asset_cfg.name]
+ 
+-    qvel = wp.to_torch(asset.data.joint_vel)[:, asset_cfg.joint_ids]
+-    qfrc = wp.to_torch(asset.data.applied_torque)[:, asset_cfg.joint_ids]
++    qvel = as_torch(asset.data.joint_vel)[:, asset_cfg.joint_ids]
++    qfrc = as_torch(asset.data.applied_torque)[:, asset_cfg.joint_ids]
+     return torch.sum(torch.abs(qvel) * torch.abs(qfrc), dim=-1)
+ 
+ 
+@@ -34,7 +35,7 @@
+ ) -> torch.Tensor:
+     asset: Articulation = env.scene[asset_cfg.name]
+ 
+-    reward = torch.sum(torch.abs(wp.to_torch(asset.data.joint_pos) - wp.to_torch(asset.data.default_joint_pos)), dim=1)
++    reward = torch.sum(torch.abs(as_torch(asset.data.joint_pos) - as_torch(asset.data.default_joint_pos)), dim=1)
+     cmd_norm = torch.norm(env.command_manager.get_command(command_name), dim=1)
+     return reward * (cmd_norm < 0.1)
+ 
+@@ -52,7 +53,7 @@
+     asset: RigidObject = env.scene[asset_cfg.name]
+ 
+     desired_gravity = torch.tensor(desired_gravity, device=env.device)
+-    cos_dist = torch.sum(wp.to_torch(asset.data.projected_gravity_b) * desired_gravity, dim=-1)  # cosine distance
++    cos_dist = torch.sum(as_torch(asset.data.projected_gravity_b) * desired_gravity, dim=-1)  # cosine distance
+     normalized = 0.5 * cos_dist + 0.5  # map from [-1, 1] to [0, 1]
+     return torch.square(normalized)
+ 
+@@ -61,7 +62,7 @@
+     """Penalize z-axis base linear velocity using L2 squared kernel."""
+     # extract the used quantities (to enable type-hinting)
+     asset: RigidObject = env.scene[asset_cfg.name]
+-    reward = torch.square(1 - wp.to_torch(asset.data.projected_gravity_b)[:, 2])
++    reward = torch.square(1 - as_torch(asset.data.projected_gravity_b)[:, 2])
+     return reward
+ 
+ 
+@@ -72,8 +73,8 @@
+     # extract the used quantities (to enable type-hinting)
+     asset: Articulation = env.scene[asset_cfg.name]
+     cmd = torch.linalg.norm(env.command_manager.get_command("base_velocity"), dim=1)
+-    body_vel = torch.linalg.norm(wp.to_torch(asset.data.root_lin_vel_b)[:, :2], dim=1)
+-    reward = torch.linalg.norm((wp.to_torch(asset.data.joint_pos) - wp.to_torch(asset.data.default_joint_pos)), dim=1)
++    body_vel = torch.linalg.norm(as_torch(asset.data.root_lin_vel_b)[:, :2], dim=1)
++    reward = torch.linalg.norm((as_torch(asset.data.joint_pos) - as_torch(asset.data.default_joint_pos)), dim=1)
+     return torch.where(torch.logical_or(cmd > 0.0, body_vel > velocity_threshold), reward, stand_still_scale * reward)
+ 
+ 
+@@ -85,7 +86,7 @@
+ def feet_stumble(env: ManagerBasedRLEnv, sensor_cfg: SceneEntityCfg) -> torch.Tensor:
+     # extract the used quantities (to enable type-hinting)
+     contact_sensor: ContactSensor = env.scene.sensors[sensor_cfg.name]
+-    net_forces_w = wp.to_torch(contact_sensor.data.net_forces_w)
++    net_forces_w = as_torch(contact_sensor.data.net_forces_w)
+     forces_z = torch.abs(net_forces_w[:, sensor_cfg.body_ids, 2])
+     forces_xy = torch.linalg.norm(net_forces_w[:, sensor_cfg.body_ids, :2], dim=2)
+     # Penalize feet hitting vertical surfaces
+@@ -102,11 +103,11 @@
+ ) -> torch.Tensor:
+     """Reward the swinging feet for clearing a specified height off the ground"""
+     asset: RigidObject = env.scene[asset_cfg.name]
+-    body_pos_w = wp.to_torch(asset.data.body_pos_w)
+-    root_pos_w = wp.to_torch(asset.data.root_pos_w)
+-    body_lin_vel_w = wp.to_torch(asset.data.body_lin_vel_w)
+-    root_lin_vel_w = wp.to_torch(asset.data.root_lin_vel_w)
+-    root_quat_w = wp.to_torch(asset.data.root_quat_w)
++    body_pos_w = as_torch(asset.data.body_pos_w)
++    root_pos_w = as_torch(asset.data.root_pos_w)
++    body_lin_vel_w = as_torch(asset.data.body_lin_vel_w)
++    root_lin_vel_w = as_torch(asset.data.root_lin_vel_w)
++    root_quat_w = as_torch(asset.data.root_quat_w)
+     cur_footpos_translated = body_pos_w[:, asset_cfg.body_ids, :] - root_pos_w[:, :].unsqueeze(1)
+     footpos_in_body_frame = torch.zeros(env.num_envs, len(asset_cfg.body_ids), 3, device=env.device)
+     cur_footvel_translated = body_lin_vel_w[:, asset_cfg.body_ids, :] - root_lin_vel_w[:, :].unsqueeze(1)
+@@ -118,7 +119,7 @@
+     foot_velocity_tanh = torch.tanh(tanh_mult * torch.norm(footvel_in_body_frame[:, :, :2], dim=2))
+     reward = torch.sum(foot_z_target_error * foot_velocity_tanh, dim=1)
+     reward *= torch.linalg.norm(env.command_manager.get_command(command_name), dim=1) > 0.1
+-    reward *= torch.clamp(-wp.to_torch(env.scene["robot"].data.projected_gravity_b)[:, 2], 0, 0.7) / 0.7
++    reward *= torch.clamp(-as_torch(env.scene["robot"].data.projected_gravity_b)[:, 2], 0, 0.7) / 0.7
+     return reward
+ 
+ 
+@@ -127,8 +128,8 @@
+ ) -> torch.Tensor:
+     """Reward the swinging feet for clearing a specified height off the ground"""
+     asset: RigidObject = env.scene[asset_cfg.name]
+-    foot_z_target_error = torch.square(wp.to_torch(asset.data.body_pos_w)[:, asset_cfg.body_ids, 2] - target_height)
+-    foot_velocity_tanh = torch.tanh(tanh_mult * torch.norm(wp.to_torch(asset.data.body_lin_vel_w)[:, asset_cfg.body_ids, :2], dim=2))
++    foot_z_target_error = torch.square(as_torch(asset.data.body_pos_w)[:, asset_cfg.body_ids, 2] - target_height)
++    foot_velocity_tanh = torch.tanh(tanh_mult * torch.norm(as_torch(asset.data.body_lin_vel_w)[:, asset_cfg.body_ids, :2], dim=2))
+     reward = foot_z_target_error * foot_velocity_tanh
+     return torch.exp(-torch.sum(reward, dim=1) / std)
+ 
+@@ -137,7 +138,7 @@
+     env: ManagerBasedRLEnv, threshold: float = 0.2, asset_cfg: SceneEntityCfg = SceneEntityCfg("robot")
+ ) -> torch.Tensor:
+     asset: Articulation = env.scene[asset_cfg.name]
+-    feet_pos = wp.to_torch(asset.data.body_pos_w)[:, asset_cfg.body_ids, :]
++    feet_pos = as_torch(asset.data.body_pos_w)[:, asset_cfg.body_ids, :]
+     distance = torch.norm(feet_pos[:, 0] - feet_pos[:, 1], dim=-1)
+     return (threshold - distance).clamp(min=0)
+ 
+@@ -150,7 +151,7 @@
+     """
+     # asset: Articulation = env.scene[asset_cfg.name]
+     contact_sensor: ContactSensor = env.scene.sensors[sensor_cfg.name]
+-    is_contact = wp.to_torch(contact_sensor.data.current_contact_time)[:, sensor_cfg.body_ids] > 0
++    is_contact = as_torch(contact_sensor.data.current_contact_time)[:, sensor_cfg.body_ids] > 0
+ 
+     command_norm = torch.norm(env.command_manager.get_command(command_name), dim=1)
+     reward = torch.sum(is_contact, dim=-1).float()
+@@ -164,8 +165,8 @@
+     if contact_sensor.cfg.track_air_time is False:
+         raise RuntimeError("Activate ContactSensor's track_air_time!")
+     # compute the reward
+-    last_air_time = wp.to_torch(contact_sensor.data.last_air_time)[:, sensor_cfg.body_ids]
+-    last_contact_time = wp.to_torch(contact_sensor.data.last_contact_time)[:, sensor_cfg.body_ids]
++    last_air_time = as_torch(contact_sensor.data.last_air_time)[:, sensor_cfg.body_ids]
++    last_contact_time = as_torch(contact_sensor.data.last_contact_time)[:, sensor_cfg.body_ids]
+     return torch.var(torch.clip(last_air_time, max=0.5), dim=1) + torch.var(
+         torch.clip(last_contact_time, max=0.5), dim=1
+     )
+@@ -185,7 +186,7 @@
+     command_name=None,
+ ) -> torch.Tensor:
+     contact_sensor: ContactSensor = env.scene.sensors[sensor_cfg.name]
+-    is_contact = wp.to_torch(contact_sensor.data.current_contact_time)[:, sensor_cfg.body_ids] > 0
++    is_contact = as_torch(contact_sensor.data.current_contact_time)[:, sensor_cfg.body_ids] > 0
+ 
+     global_phase = ((env.episode_length_buf * env.step_dt) % period / period).unsqueeze(1)
+     phases = []
+@@ -222,7 +223,7 @@
+     # Iterate over all joint pairs
+     for joint_pair in env.joint_mirror_joints_cache:
+         # Calculate the difference for each pair and add to the total reward
+-        joint_pos = wp.to_torch(asset.data.joint_pos)
++        joint_pos = as_torch(asset.data.joint_pos)
+         reward += torch.sum(
+             torch.square(joint_pos[:, joint_pair[0][0]] - joint_pos[:, joint_pair[1][0]]),
+             dim=-1,
+
+--- upstream/tasks/locomotion/robots/__init__.py
++++ compat/tasks/locomotion/robots/__init__.py
+@@ -0,0 +1 @@
++"""Pinned Unitree package; project registers explicitly selected PhysX tasks."""
+
+--- upstream/tasks/locomotion/robots/g1/__init__.py
++++ compat/tasks/locomotion/robots/g1/__init__.py
+@@ -0,0 +1 @@
++"""Pinned Unitree package; project registers explicitly selected PhysX tasks."""
+
+--- upstream/tasks/locomotion/robots/g1/29dof/__init__.py
++++ compat/tasks/locomotion/robots/g1/29dof/__init__.py
+@@ -1,59 +1 @@
+-import gymnasium as gym
+-
+-gym.register(
+-    id="Unitree-G1-29dof-Velocity",
+-    entry_point="isaaclab.envs:ManagerBasedRLEnv",
+-    disable_env_checker=True,
+-    kwargs={
+-        "env_cfg_entry_point": f"{__name__}.velocity_env_cfg:RobotEnvCfg",
+-        "play_env_cfg_entry_point": f"{__name__}.velocity_env_cfg:RobotPlayEnvCfg",
+-        "rsl_rl_cfg_entry_point": f"unitree_rl_lab.tasks.locomotion.agents.rsl_rl_ppo_cfg:BasePPORunnerCfg",
+-    },
+-)
+-
+-gym.register(
+-    id="Unitree-G1-29dof-Velocity-Flat",
+-    entry_point="isaaclab.envs:ManagerBasedRLEnv",
+-    disable_env_checker=True,
+-    kwargs={
+-        "env_cfg_entry_point": f"{__name__}.velocity_env_cfg:RobotFlatEnvCfg",
+-        "play_env_cfg_entry_point": f"{__name__}.velocity_env_cfg:RobotFlatPlayEnvCfg",
+-        "rsl_rl_cfg_entry_point": f"unitree_rl_lab.tasks.locomotion.agents.rsl_rl_ppo_cfg:BasePPORunnerCfg",
+-    },
+-)
+-
+-# ---------------------------------------------------------------------------
+-# Direct-workflow variant: bypass Reward/Obs/Termination managers.
+-# Same MDP semantics as the Manager version above, just no per-term Python
+-# dispatch on the hot path.  See:
+-#   source/unitree_rl_lab/unitree_rl_lab/tasks/locomotion/direct/velocity_base_env.py
+-# for the env class, and ./velocity_direct_env_cfg.py for cfg specifics.
+-# ---------------------------------------------------------------------------
+-
+-gym.register(
+-    id="Unitree-G1-29dof-Velocity-Flat-Direct",
+-    entry_point="unitree_rl_lab.tasks.locomotion.direct:UnitreeVelocityDirectEnv",
+-    disable_env_checker=True,
+-    kwargs={
+-        "env_cfg_entry_point": f"{__name__}.velocity_direct_env_cfg:G1VelocityDirectEnvCfg",
+-        "play_env_cfg_entry_point": f"{__name__}.velocity_direct_env_cfg:G1VelocityDirectPlayEnvCfg",
+-        "rsl_rl_cfg_entry_point": f"unitree_rl_lab.tasks.locomotion.agents.rsl_rl_ppo_cfg:BasePPORunnerCfg",
+-    },
+-)
+-
+-# ---------------------------------------------------------------------------
+-# Direct-Warp variant: kernel-based reward / obs / termination / reset path
+-# captured into CUDA Graph.  Same MDP semantics as the Manager / Direct
+-# versions above.  Symmetric AC (actor + critic both read ``obs["policy"]``).
+-# ---------------------------------------------------------------------------
+-
+-gym.register(
+-    id="Unitree-G1-29dof-Velocity-Flat-Direct-Warp",
+-    entry_point="unitree_rl_lab.tasks.locomotion.direct:G1VelocityWarpEnv",
+-    disable_env_checker=True,
+-    kwargs={
+-        "env_cfg_entry_point": f"{__name__}.velocity_warp_env_cfg:G1VelocityWarpEnvCfg",
+-        "play_env_cfg_entry_point": f"{__name__}.velocity_warp_env_cfg:G1VelocityWarpPlayEnvCfg",
+-        "rsl_rl_cfg_entry_point": f"unitree_rl_lab.tasks.locomotion.agents.rsl_rl_ppo_cfg:BasePPORunnerCfg",
+-    },
+-)
++"""Pinned Unitree package; project registers explicitly selected PhysX tasks."""
+
+--- upstream/tasks/locomotion/robots/g1/29dof/velocity_env_cfg.py
++++ compat/tasks/locomotion/robots/g1/29dof/velocity_env_cfg.py
+@@ -12,50 +12,20 @@
+ from isaaclab.managers import SceneEntityCfg
+ from isaaclab.managers import TerminationTermCfg as DoneTerm
+ from isaaclab.scene import InteractiveSceneCfg
+-from isaaclab.sensors import RayCasterCfg, patterns
++from isaaclab.sensors import RayCasterCfg, ContactSensorCfg, patterns
+ from isaaclab.sim import SimulationCfg
+ from isaaclab.terrains import TerrainImporterCfg
+ from isaaclab.utils import configclass
+ from isaaclab.utils.assets import ISAAC_NUCLEUS_DIR, ISAACLAB_NUCLEUS_DIR
+ from isaaclab.utils.noise import UniformNoiseCfg as Unoise
+-from isaaclab_newton.physics import MJWarpSolverCfg, NewtonCfg
+-from isaaclab_newton.sensors import ContactSensorCfg as NewtonContactSensorCfg
+-from isaaclab_physx.physics import PhysxCfg
+-from isaaclab_physx.sensors import ContactSensorCfg as PhysXContactSensorCfg
+-from isaaclab_tasks.utils import PresetCfg, preset
++from isaaclab.sim import PhysxCfg
+ 
+ from unitree_rl_lab.assets.robots.unitree import UNITREE_G1_29DOF_CFG as ROBOT_CFG
+ from unitree_rl_lab.tasks.locomotion import mdp
+ 
+ 
+-@configclass
+-class PhysicsCfg(PresetCfg):
+-    physx: PhysxCfg = PhysxCfg(gpu_max_rigid_patch_count=10 * 2**15)
+-    default = physx
+-    newton: NewtonCfg = NewtonCfg(
+-        solver_cfg=MJWarpSolverCfg(
+-            njmax=95,
+-            nconmax=20,
+-            cone="pyramidal",
+-            impratio=1,
+-            integrator="implicitfast",
+-            ls_parallel=True,
+-            ls_iterations=15,
+-        ),
+-        num_substeps=1,
+-        debug_mode=False,
+-    )
+-
+-
+-@configclass
+-class ContactSensorPresetCfg(PresetCfg):
+-    physx: PhysXContactSensorCfg = PhysXContactSensorCfg(
+-        prim_path="{ENV_REGEX_NS}/Robot/.*", history_length=3, track_air_time=True
+-    )
+-    default = physx
+-    newton: NewtonContactSensorCfg = NewtonContactSensorCfg(
+-        prim_path="{ENV_REGEX_NS}/Robot/.*", history_length=3, track_air_time=True
+-    )
++
++
+ 
+ 
+ COBBLESTONE_ROAD_CFG = terrain_gen.TerrainGeneratorCfg(
+@@ -110,7 +80,7 @@
+         debug_vis=False,
+         mesh_prim_paths=["/World/ground"],
+     )
+-    contact_forces: ContactSensorPresetCfg = ContactSensorPresetCfg()
++    contact_forces: ContactSensorCfg = ContactSensorCfg(prim_path="{ENV_REGEX_NS}/Robot/.*", history_length=3, track_air_time=True)
+     # lights
+     sky_light = AssetBaseCfg(
+         prim_path="/World/skyLight",
+@@ -215,31 +185,8 @@
+     pass
+ 
+ 
+-@configclass
+-class NewtonEventCfg(ResetEventCfg, StartupEventCfg):
+-    """Newton event configuration (reset + startup).
+-
+-    Same as :class:`PhysxEventCfg` but ``physics_material`` is overridden
+-    to use :func:`mdp.newton_randomize_rigid_body_material` (Newton uses a
+-    single ``mu``; ``dynamic_friction_range`` / ``num_buckets`` are ignored).
+-    """
+-
+-    physics_material = EventTerm(
+-        func=mdp.newton_randomize_rigid_body_material,
+-        mode="startup",
+-        params={
+-            "asset_cfg": SceneEntityCfg("robot", body_names=".*"),
+-            "static_friction_range": (0.3, 1.0),
+-            "restitution_range": (0.0, 0.0),
+-        },
+-    )
+-
+-
+-@configclass
+-class EventCfgPreset(PresetCfg):
+-    default: PhysxEventCfg = PhysxEventCfg()
+-    physx: PhysxEventCfg = PhysxEventCfg()
+-    newton: NewtonEventCfg = NewtonEventCfg()
++
++
+ 
+ 
+ @configclass
+@@ -445,7 +392,7 @@
+     """Configuration for the locomotion velocity-tracking environment."""
+ 
+     # Physics backend (preset-switchable)
+-    sim: SimulationCfg = SimulationCfg(physics=PhysicsCfg())
++    sim: SimulationCfg = SimulationCfg(physx=PhysxCfg(gpu_max_rigid_patch_count=10 * 2**15))
+     # Scene settings
+     scene: RobotSceneCfg = RobotSceneCfg(num_envs=4096, env_spacing=2.5)
+     # Basic settings
+@@ -455,7 +402,7 @@
+     # MDP settings
+     rewards: RewardsCfg = RewardsCfg()
+     terminations: TerminationsCfg = TerminationsCfg()
+-    events: EventCfgPreset = EventCfgPreset()
++    events: PhysxEventCfg = PhysxEventCfg()
+     curriculum: CurriculumCfg = CurriculumCfg()
+ 
+     def __post_init__(self):
+@@ -470,8 +417,7 @@
+ 
+         # update sensor update periods
+         # we tick all the sensors based on the smallest update period (physics update period)
+-        self.scene.contact_forces.physx.update_period = self.sim.dt
+-        self.scene.contact_forces.newton.update_period = self.sim.dt
++        self.scene.contact_forces.update_period = self.sim.dt
+         self.scene.height_scanner.update_period = self.decimation * self.sim.dt
+ 
+         # check if terrain levels curriculum is enabled - if so, enable curriculum for terrain generator
+@@ -483,26 +429,6 @@
+             if self.scene.terrain.terrain_generator is not None:
+                 self.scene.terrain.terrain_generator.curriculum = False
+ 
+-    def validate_config(self):
+-        from isaaclab_newton.physics import NewtonCfg
+-
+-        physics = self.sim.physics
+-        if isinstance(physics, NewtonCfg):
+-            if self.scene.terrain.terrain_generator is not None:
+-                raise ValueError(
+-                    "Newton backend does not support terrain generators. "
+-                    "Use Unitree-G1-29dof-Velocity-Flat or set terrain_type='plane'."
+-                )
+-        if hasattr(self.scene, "camera") and self.scene.camera is not None:
+-            from isaaclab_newton.renderers import NewtonWarpRendererCfg
+-
+-            if isinstance(self.scene.camera.renderer_cfg, NewtonWarpRendererCfg):
+-                allowed = {"rgb", "depth"}
+-                for data_type in self.scene.camera.data_types:
+-                    if data_type not in allowed:
+-                        raise ValueError(
+-                            f"Newton Warp renderer does not support '{data_type}'. Only rgb and depth are supported."
+-                        )
+ 
+ 
+ @configclass
+
+--- upstream/tasks/locomotion/robots/go2/__init__.py
++++ compat/tasks/locomotion/robots/go2/__init__.py
+@@ -1,34 +1 @@
+-import gymnasium as gym
+-
+-gym.register(
+-    id="Unitree-Go2-Velocity",
+-    entry_point="isaaclab.envs:ManagerBasedRLEnv",
+-    disable_env_checker=True,
+-    kwargs={
+-        "env_cfg_entry_point": f"{__name__}.velocity_env_cfg:RobotEnvCfg",
+-        "play_env_cfg_entry_point": f"{__name__}.velocity_env_cfg:RobotPlayEnvCfg",
+-        "rsl_rl_cfg_entry_point": f"unitree_rl_lab.tasks.locomotion.agents.rsl_rl_ppo_cfg:BasePPORunnerCfg",
+-    },
+-)
+-
+-gym.register(
+-    id="Unitree-Go2-Velocity-Flat",
+-    entry_point="isaaclab.envs:ManagerBasedRLEnv",
+-    disable_env_checker=True,
+-    kwargs={
+-        "env_cfg_entry_point": f"{__name__}.velocity_env_cfg:RobotFlatEnvCfg",
+-        "play_env_cfg_entry_point": f"{__name__}.velocity_env_cfg:RobotFlatPlayEnvCfg",
+-        "rsl_rl_cfg_entry_point": f"unitree_rl_lab.tasks.locomotion.agents.rsl_rl_ppo_cfg:BasePPORunnerCfg",
+-    },
+-)
+-
+-gym.register(
+-    id="Unitree-Go2-Velocity-Flat-Direct",
+-    entry_point="unitree_rl_lab.tasks.locomotion.direct:UnitreeVelocityDirectEnv",
+-    disable_env_checker=True,
+-    kwargs={
+-        "env_cfg_entry_point": f"{__name__}.velocity_direct_env_cfg:Go2VelocityDirectEnvCfg",
+-        "play_env_cfg_entry_point": f"{__name__}.velocity_direct_env_cfg:Go2VelocityDirectPlayEnvCfg",
+-        "rsl_rl_cfg_entry_point": f"unitree_rl_lab.tasks.locomotion.agents.rsl_rl_ppo_cfg:BasePPORunnerCfg",
+-    },
+-)
++"""Pinned Unitree package; project registers explicitly selected PhysX tasks."""
+
+--- upstream/tasks/locomotion/robots/go2/velocity_env_cfg.py
++++ compat/tasks/locomotion/robots/go2/velocity_env_cfg.py
+@@ -20,7 +20,7 @@
+ from isaaclab.utils.noise import UniformNoiseCfg as Unoise
+ from isaaclab_newton.physics import MJWarpSolverCfg, NewtonCfg
+ from isaaclab_newton.sensors import ContactSensorCfg as NewtonContactSensorCfg
+-from isaaclab_physx.physics import PhysxCfg
++from isaaclab.sim import PhysxCfg
+ from isaaclab_physx.sensors import ContactSensorCfg as PhysXContactSensorCfg
+ from isaaclab_tasks.utils import PresetCfg, preset
+ 
+
+--- upstream/tasks/locomotion/robots/h1/__init__.py
++++ compat/tasks/locomotion/robots/h1/__init__.py
+@@ -1,34 +1 @@
+-import gymnasium as gym
+-
+-gym.register(
+-    id="Unitree-H1-Velocity",
+-    entry_point="isaaclab.envs:ManagerBasedRLEnv",
+-    disable_env_checker=True,
+-    kwargs={
+-        "env_cfg_entry_point": f"{__name__}.velocity_env_cfg:RobotEnvCfg",
+-        "play_env_cfg_entry_point": f"{__name__}.velocity_env_cfg:RobotPlayEnvCfg",
+-        "rsl_rl_cfg_entry_point": f"unitree_rl_lab.tasks.locomotion.agents.rsl_rl_ppo_cfg:BasePPORunnerCfg",
+-    },
+-)
+-
+-gym.register(
+-    id="Unitree-H1-Velocity-Flat",
+-    entry_point="isaaclab.envs:ManagerBasedRLEnv",
+-    disable_env_checker=True,
+-    kwargs={
+-        "env_cfg_entry_point": f"{__name__}.velocity_env_cfg:RobotFlatEnvCfg",
+-        "play_env_cfg_entry_point": f"{__name__}.velocity_env_cfg:RobotFlatPlayEnvCfg",
+-        "rsl_rl_cfg_entry_point": f"unitree_rl_lab.tasks.locomotion.agents.rsl_rl_ppo_cfg:BasePPORunnerCfg",
+-    },
+-)
+-
+-gym.register(
+-    id="Unitree-H1-Velocity-Flat-Direct",
+-    entry_point="unitree_rl_lab.tasks.locomotion.direct:UnitreeVelocityDirectEnv",
+-    disable_env_checker=True,
+-    kwargs={
+-        "env_cfg_entry_point": f"{__name__}.velocity_direct_env_cfg:H1VelocityDirectEnvCfg",
+-        "play_env_cfg_entry_point": f"{__name__}.velocity_direct_env_cfg:H1VelocityDirectPlayEnvCfg",
+-        "rsl_rl_cfg_entry_point": f"unitree_rl_lab.tasks.locomotion.agents.rsl_rl_ppo_cfg:BasePPORunnerCfg",
+-    },
+-)
++"""Pinned Unitree package; project registers explicitly selected PhysX tasks."""
+
+--- upstream/tasks/locomotion/robots/h1/velocity_env_cfg.py
++++ compat/tasks/locomotion/robots/h1/velocity_env_cfg.py
+@@ -20,7 +20,7 @@
+ from isaaclab.utils.noise import UniformNoiseCfg as Unoise
+ from isaaclab_newton.physics import MJWarpSolverCfg, NewtonCfg
+ from isaaclab_newton.sensors import ContactSensorCfg as NewtonContactSensorCfg
+-from isaaclab_physx.physics import PhysxCfg
++from isaaclab.sim import PhysxCfg
+ from isaaclab_physx.sensors import ContactSensorCfg as PhysXContactSensorCfg
+ from isaaclab_tasks.utils import PresetCfg, preset
+ 
+
+--- upstream/tasks/locomotion/agents/__init__.py
++++ compat/tasks/locomotion/agents/__init__.py
+@@ -0,0 +1 @@
++"""Pinned Unitree package; project registers explicitly selected PhysX tasks."""
+
+--- upstream/tasks/locomotion/agents/rsl_rl_ppo_cfg.py
++++ compat/tasks/locomotion/agents/rsl_rl_ppo_cfg.py
+@@ -25,7 +25,7 @@
+     # asymmetric AC and break a controlled symmetric-vs-asymmetric parity
+     # study.  The explicit list below short-circuits that fallback.
+     obs_groups = {
+-        "actor": ["policy"],
++        "policy": ["policy"],
+         "critic": ["policy"],
+     }
+     policy = RslRlPpoActorCriticCfg(

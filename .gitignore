@@ -9,3 +9,25 @@ artifacts/*.pt
 artifacts/*.onnx
 artifacts/*.mp4
 *.egg-info/
+
+# Downloaded third-party source, licensed robot meshes and generated simulation data.
+third_party/
+vendor/
+assets/generated/
+assets/unitree_ros/
+assets/motions/*.npz
+# Local audit arrays/media are retained on disk; compact evidence JSON can be committed.
+artifacts/audit/**/*.npz
+artifacts/audit/**/*.yaml
+artifacts/audit/**/*.mp4
+artifacts/audit/*.png
+artifacts/audit/*.jpg
+artifacts/audit/walk_v0_closeup/
+artifacts/unitree_reference/**/*.npz
+artifacts/unitree_reference/**/*.yaml
+artifacts/unitree_reference/**/*.mp4
+artifacts/unitree_reference/*.lock
+artifacts/unitree_reference/*.tmp
+artifacts/unitree_reference/progress.json
+artifacts/upstream/unitree_tree.json
+artifacts/upstream/unitree_ros_tree.json

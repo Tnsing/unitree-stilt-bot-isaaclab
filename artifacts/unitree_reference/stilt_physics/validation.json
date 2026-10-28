@@ -1,0 +1,57 @@
+{
+  "asset_spec": "/data/\u8e29\u9ad8\u8df7/assets/unitree_ros/g1_description/stilt_spec.json",
+  "num_joints": 29,
+  "num_bodies": 41,
+  "stilt_body_names": [
+    "left_stilt_link",
+    "right_stilt_link"
+  ],
+  "stilt_masses_kg": [
+    0.800000011920929,
+    0.800000011920929
+  ],
+  "stilt_inertias": [
+    [
+      0.008501932956278324,
+      0.0,
+      0.0,
+      0.0,
+      0.008635266683995724,
+      0.0,
+      0.0,
+      0.0,
+      0.000443866680143401
+    ],
+    [
+      0.008501932956278324,
+      0.0,
+      0.0,
+      0.0,
+      0.008635266683995724,
+      0.0,
+      0.0,
+      0.0,
+      0.000443866680143401
+    ]
+  ],
+  "total_mass_kg": 38.941139221191406,
+  "collision_prims": [
+    "/World/envs/env_0/Robot/left_stilt_link/collisions/mesh_0/cylinder",
+    "/World/envs/env_0/Robot/left_stilt_link/collisions/mesh_1/box",
+    "/World/envs/env_0/Robot/right_stilt_link/collisions/mesh_0/cylinder",
+    "/World/envs/env_0/Robot/right_stilt_link/collisions/mesh_1/box"
+  ],
+  "fixed_joints": [
+    "/World/envs/env_0/Robot/joints/left_stilt_fixed",
+    "/World/envs/env_0/Robot/joints/right_stilt_fixed"
+  ],
+  "max_stilt_force_N": 1117.262939453125,
+  "mean_final_stilt_vertical_force_N": 229.77169799804688,
+  "final_root_z_mean_m": 0.5619664192199707,
+  "final_tilt_max_rad": 1.2949703931808472,
+  "minimum_tip_bottom_z_m": -1.4036893844604492e-05,
+  "original_ankle_max_contact_force_N": 0.0,
+  "default_pd_stable": false,
+  "passed": true,
+  "scope": "USD import + default-PD contact test; not trained stilt walking"
+}

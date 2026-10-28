@@ -1,8 +1,14 @@
 # Unitree G1 Isaac Lab skill training
 
-本仓库记录基于宇树 Unitree G1、Isaac Lab 和 RSL-RL PPO 的正式技能训练。按照当前任务要求，本阶段**不加入高跷结构**，先完成平面上的行走、跑步、跳跃和跳舞训练，并为每个技能保留训练日志、配置、里程碑 checkpoint 和演示视频。
+本仓库记录基于宇树 Unitree G1、Isaac Lab 和 RSL-RL PPO 的正式技能训练。按照当前任务要求，上一轮**未加入高跷结构**，先完成平面上的行走、跑步、跳跃和跳舞训练，并为每个技能保留训练日志、配置、里程碑 checkpoint 和演示视频。
 
-## 当前阶段边界
+## 新一轮：参考宇树 Unitree RL Lab 的四技能训练
+
+当前按新请求接入官方 `isaaclab3.0` 分支的 G1 29 DOF 速度跟踪与动作模仿，实现行走、跑步、舞蹈和真实附加刚体高跷任务。本机使用明确记录的 Isaac Lab 2.3 / Sim 5.1 PhysX 兼容移植；不宣称运行了 Lab 3.0 / Sim 6.0。新任务、版本适配、复现命令和证据边界见 [Unitree reference training](docs/unitree_reference.md)。
+
+新一轮输出在 `artifacts/unitree_reference/` 和 `logs/unitree_reference/`。下方的原生 G1 四技能说明及 `artifacts/formal/` 证据属于上一轮无高跷实验。
+
+## 上一轮阶段边界
 
 - 机器人：Isaac Lab 原生 Unitree G1 minimal asset。
 - 场景：平面，不注册任何高跷 USD、附加刚体或约束。
@@ -22,7 +28,7 @@
 
 ## 形式化证据布局
 
-正式训练完成后，每项技能的证据写入；当前已完成的训练与独立审计汇总见 [`docs/formal_evidence.md`](formal_evidence.md)：
+正式训练完成后，每项技能的证据写入；当前已完成的训练与独立审计汇总见 [`docs/formal_evidence.md`](docs/formal_evidence.md)：
 
 ```text
 logs/rsl_rl/<experiment>/<timestamp>_formal_seed42/

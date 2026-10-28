@@ -1,0 +1,2 @@
+# Unified diff context lines intentionally contain one space.
+artifacts/upstream/*.patch whitespace=-blank-at-eol

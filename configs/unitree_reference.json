@@ -1,0 +1,12 @@
+{
+  "upstream_branch": "isaaclab3.0",
+  "upstream_commit": "2522f89ab8ad6b1188b0368d122d16cb0e3cb8c8",
+  "runtime": {"isaac_lab": "2.3.0", "isaac_sim": "5.1.0", "backend": "PhysX", "compatibility_port": true},
+  "robot": "Unitree G1 29 DOF, official unitree_ros URDF",
+  "training": {"num_envs": 4096, "first_stage_iterations": 2000, "seed": 42, "checkpoint_interval": 100, "milestone_videos": [500, 1000, 1999]},
+  "tasks": ["walk", "run", "dance", "stilt"],
+  "dance": {"reference": "upstream dance_102 CSV", "reference_fps": 50, "quaternion_order": "wxyz"},
+  "stilt": {"prototype": true, "pole_length_m": 0.3, "pad_size_m": [0.12, 0.08, 0.02], "mass_per_side_kg": 0.8, "connection": "fixed joint", "additional_actuators": 0},
+  "evaluation": {"num_envs": 64, "seed": 20261028, "steps": 1500, "nominal_no_pushes": true},
+  "boundary": "First-stage formal budget is not the upstream 30000/50000-iteration convergence budget or evidence of hardware transfer. Failure gates must remain visible."
+}
