@@ -1,0 +1,36 @@
+{
+  "task": "UnitreeRef-G1-29dof-Walk-v0",
+  "checkpoint": "/data/\u8e29\u9ad8\u8df7/logs/rsl_rl/unitree_reference_walk/2026-10-28_18-55-57_formal_unitree_ref_seed42/model_1000.pt",
+  "checkpoint_sha256": "55cd7dac618887c6aa185461cd7c196eaf764423c100c74aff0cf68c9dcfdde7",
+  "skill": "walk",
+  "num_envs": 1,
+  "steps": 500,
+  "dt": 0.02,
+  "seed": 20261028,
+  "survival_rate": 1.0,
+  "fall_rate": 0.0,
+  "mean_speed_mps": 0.5671401619911194,
+  "forward_rmse_mps": 0.046527840197086334,
+  "p95_tilt_deg": 1.884501194953918,
+  "support_body_names": [
+    "left_ankle_roll_link",
+    "right_ankle_roll_link"
+  ],
+  "two_feet_unloaded_fraction": 0.0,
+  "upstream_commit": "2522f89ab8ad6b1188b0368d122d16cb0e3cb8c8",
+  "runtime": "Isaac Lab 2.3 / Isaac Sim 5.1 / PhysX compatibility port",
+  "stilt_geometry": false,
+  "pushes": false,
+  "reference_replay": false,
+  "boundary": "One held-out seed, nominal fixed command/full dance clip; not hardware or broad robustness evidence.",
+  "flight_event_count": [
+    0
+  ],
+  "horizon_complete": false,
+  "gate": {
+    "definition": "30 s survival >=95%, speed RMSE <=0.25 m/s (run <=0.4)",
+    "passed": false
+  },
+  "video": "/data/\u8e29\u9ad8\u8df7/artifacts/unitree_reference/walk/video_1000/demo.mp4",
+  "video_sha256": "5f352a27653c443500859631068ff173ac9af64e26a106b9d287338cdad5bab3"
+}
