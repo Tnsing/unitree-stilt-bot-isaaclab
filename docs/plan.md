@@ -13,16 +13,16 @@
 - [x] Keep the scene on a flat plane and verify no stilt geometry is registered.
 - [x] Validate all four task configurations with a 4-environment, 2-iteration Isaac Lab smoke run.
 - [x] Add a checkpoint-based video recorder and an auditable milestone writer.
-- [ ] Complete formal 4096-environment, 1500-iteration training with seed 42 for each skill.
-- [ ] Save every periodic checkpoint, TensorBoard events, env/agent YAML snapshots and exact stdout logs.
-- [ ] Record one 500-step demonstration video from the final checkpoint for each skill.
-- [ ] Verify each milestone manifest against files, hashes, video size and TensorBoard scalars.
+- [x] Complete formal 4096-environment, 1500-iteration training with seed 42 for each skill.
+- [x] Save every periodic checkpoint, TensorBoard events, env/agent YAML snapshots and exact stdout logs.
+- [x] Record one 500-step demonstration video from the final checkpoint for each skill.
+- [x] Verify each milestone manifest against files, hashes and video metadata; retain the dance audit failure explicitly.
 
 ## Phase 2 — evidence package
 
-- [ ] Generate a final four-skill evidence index with training status and last metrics.
-- [ ] Review videos and label them as simulator demonstrations, not real-robot validation.
-- [ ] Report the explicit boundary that jump/dance use reproducible synthetic phase references rather than motion-capture imitation.
+- [x] Generate a final four-skill evidence index with training status and last metrics.
+- [x] Review videos and label them as simulator demonstrations, not real-robot validation.
+- [x] Report the explicit boundary that jump/dance use reproducible synthetic phase references rather than motion-capture imitation.
 - [ ] Keep the attached-stilt phase separate until a licensed/validated USD and contact protocol exist.
 
 ## Deferred — attached stilts

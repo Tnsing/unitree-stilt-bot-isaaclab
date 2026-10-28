@@ -14,15 +14,15 @@
 ## 任务 ID
 
 - `StiltBot-G1-Walk-v0`
-- `StiltBot-G1-Run-v0`
-- `StiltBot-G1-Jump-v0`
-- `StiltBot-G1-Dance-v0`
+- `StiltBot-G1-Run-v0` / `StiltBot-G1-Run-v1`
+- `StiltBot-G1-Jump-v0` / `StiltBot-G1-Jump-v1`
+- `StiltBot-G1-Dance-v0` / `StiltBot-G1-Dance-v1`
 
 `StiltBot-G1-Warmup-v0` 仍保留为运行时基线。高跷任务没有注册。
 
 ## 形式化证据布局
 
-正式训练完成后，每项技能的证据写入：
+正式训练完成后，每项技能的证据写入；当前已完成的训练与独立审计汇总见 [`docs/formal_evidence.md`](formal_evidence.md)：
 
 ```text
 logs/rsl_rl/<experiment>/<timestamp>_formal_seed42/

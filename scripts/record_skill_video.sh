@@ -14,13 +14,17 @@ if [[ -x "${ISAACLAB_PYTHON}" && -f "/home/ninesoo/anaconda3/etc/profile.d/conda
   source /home/ninesoo/anaconda3/etc/profile.d/conda.sh
   conda activate "$(dirname "$(dirname "${ISAACLAB_PYTHON}")")"
 fi
-case "${SKILL}" in
-  walk) TASK="StiltBot-G1-Walk-v0"; EXPERIMENT="stiltbot_g1_walk_formal" ;;
-  run) TASK="StiltBot-G1-Run-v0"; EXPERIMENT="stiltbot_g1_run_formal" ;;
-  jump) TASK="StiltBot-G1-Jump-v0"; EXPERIMENT="stiltbot_g1_jump_formal" ;;
-  dance) TASK="StiltBot-G1-Dance-v0"; EXPERIMENT="stiltbot_g1_dance_formal" ;;
-  *) echo "Unsupported SKILL=${SKILL}" >&2; exit 2 ;;
-esac
+if [[ -n "${TASK_ID:-}" && -n "${EXPERIMENT_NAME:-}" ]]; then
+  TASK="${TASK_ID}"; EXPERIMENT="${EXPERIMENT_NAME}"
+else
+  case "${SKILL}" in
+    walk) TASK="StiltBot-G1-Walk-v0"; EXPERIMENT="stiltbot_g1_walk_formal" ;;
+    run) TASK="StiltBot-G1-Run-v0"; EXPERIMENT="stiltbot_g1_run_formal" ;;
+    jump) TASK="StiltBot-G1-Jump-v0"; EXPERIMENT="stiltbot_g1_jump_formal" ;;
+    dance) TASK="StiltBot-G1-Dance-v0"; EXPERIMENT="stiltbot_g1_dance_formal" ;;
+    *) echo "Unsupported SKILL=${SKILL}; set TASK_ID and EXPERIMENT_NAME for custom tasks" >&2; exit 2 ;;
+  esac
+fi
 if [[ "${CHECKPOINT}" = /* ]]; then
   CHECKPOINT_PATH="${CHECKPOINT}"
 else

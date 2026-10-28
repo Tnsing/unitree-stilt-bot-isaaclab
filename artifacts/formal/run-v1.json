@@ -1,0 +1,250 @@
+{
+  "schema": "stiltbot.formal-milestone.v1",
+  "created_at_utc": "2026-10-28T01:36:21.080765+00:00",
+  "skill": "run-v1",
+  "task": "StiltBot-G1-Run-v1",
+  "experiment": "stiltbot_g1_run_v1",
+  "training": {
+    "status": "completed",
+    "num_envs": 4096,
+    "max_iterations": 1500,
+    "effective_iterations": 1500,
+    "resumed_from": null,
+    "seed": 42,
+    "run_dir": "/data/踩高跷/logs/rsl_rl/stiltbot_g1_run_v1/2026-10-28_09-08-20_formal_phase_v1_seed42",
+    "train_log": "/data/踩高跷/logs/formal_suite/run.phase_formal.train.log",
+    "config_env": "/data/踩高跷/logs/rsl_rl/stiltbot_g1_run_v1/2026-10-28_09-08-20_formal_phase_v1_seed42/params/env.yaml",
+    "config_agent": "/data/踩高跷/logs/rsl_rl/stiltbot_g1_run_v1/2026-10-28_09-08-20_formal_phase_v1_seed42/params/agent.yaml",
+    "event_files": [
+      "/data/踩高跷/logs/rsl_rl/stiltbot_g1_run_v1/2026-10-28_09-08-20_formal_phase_v1_seed42/events.out.tfevents.1793149711.NSWS1050.2044115.0"
+    ],
+    "checkpoints": [
+      {
+        "path": "/data/踩高跷/logs/rsl_rl/stiltbot_g1_run_v1/2026-10-28_09-08-20_formal_phase_v1_seed42/model_0.pt",
+        "iteration": 0,
+        "sha256": "99b676dbb8914aafb6550df4aa92b23d89db0c6f01b37d5f475dd553e1a985a5"
+      },
+      {
+        "path": "/data/踩高跷/logs/rsl_rl/stiltbot_g1_run_v1/2026-10-28_09-08-20_formal_phase_v1_seed42/model_100.pt",
+        "iteration": 100,
+        "sha256": "2f2b0c02f743e68909ea21a30bc470d2390aca1795487934ac1d3004fc0dd29c"
+      },
+      {
+        "path": "/data/踩高跷/logs/rsl_rl/stiltbot_g1_run_v1/2026-10-28_09-08-20_formal_phase_v1_seed42/model_200.pt",
+        "iteration": 200,
+        "sha256": "306f3451f451d13525b2481a2868329e99270f359f441dc24acc84b703b0f1d2"
+      },
+      {
+        "path": "/data/踩高跷/logs/rsl_rl/stiltbot_g1_run_v1/2026-10-28_09-08-20_formal_phase_v1_seed42/model_300.pt",
+        "iteration": 300,
+        "sha256": "6b5a92dc6c3ae4917de7ec7439a6014ea0bd7ea25955f35cc3475f9cada800ac"
+      },
+      {
+        "path": "/data/踩高跷/logs/rsl_rl/stiltbot_g1_run_v1/2026-10-28_09-08-20_formal_phase_v1_seed42/model_400.pt",
+        "iteration": 400,
+        "sha256": "0bb4f858f97c7c9f4ff767d96f4bd5d1448ef1f9790cf10d41fbb56962e53136"
+      },
+      {
+        "path": "/data/踩高跷/logs/rsl_rl/stiltbot_g1_run_v1/2026-10-28_09-08-20_formal_phase_v1_seed42/model_500.pt",
+        "iteration": 500,
+        "sha256": "6b56d0c50569e469f7fb43e5cf3dad988d1a4134bbf7f62238baa646481bfc22"
+      },
+      {
+        "path": "/data/踩高跷/logs/rsl_rl/stiltbot_g1_run_v1/2026-10-28_09-08-20_formal_phase_v1_seed42/model_600.pt",
+        "iteration": 600,
+        "sha256": "5847a6707824ee11fbbdb8e1090f1776e47e258a31bf2570b6966e6a3c328ada"
+      },
+      {
+        "path": "/data/踩高跷/logs/rsl_rl/stiltbot_g1_run_v1/2026-10-28_09-08-20_formal_phase_v1_seed42/model_700.pt",
+        "iteration": 700,
+        "sha256": "a5bb5ffc473c56d697b791617f99470f2048486d6b25734b1751ac7c6e29f4a2"
+      },
+      {
+        "path": "/data/踩高跷/logs/rsl_rl/stiltbot_g1_run_v1/2026-10-28_09-08-20_formal_phase_v1_seed42/model_800.pt",
+        "iteration": 800,
+        "sha256": "dfdb4d1ebdaf850b0bb95661240d1b55bded25ca52d1325ffcce77a9041824b6"
+      },
+      {
+        "path": "/data/踩高跷/logs/rsl_rl/stiltbot_g1_run_v1/2026-10-28_09-08-20_formal_phase_v1_seed42/model_900.pt",
+        "iteration": 900,
+        "sha256": "8b911f2f9d4932e5943384814fe841696221a9ab22d5a3d3ae1f04d78bb70606"
+      },
+      {
+        "path": "/data/踩高跷/logs/rsl_rl/stiltbot_g1_run_v1/2026-10-28_09-08-20_formal_phase_v1_seed42/model_1000.pt",
+        "iteration": 1000,
+        "sha256": "9b6055ebbf1446df9bc9a41eaad84dc66272d2f6f334b61d3d7d06dbdd0db85e"
+      },
+      {
+        "path": "/data/踩高跷/logs/rsl_rl/stiltbot_g1_run_v1/2026-10-28_09-08-20_formal_phase_v1_seed42/model_1100.pt",
+        "iteration": 1100,
+        "sha256": "4834489810d488500d7278141013ae530780f3cf2a836d79ef9e585e576c2c09"
+      },
+      {
+        "path": "/data/踩高跷/logs/rsl_rl/stiltbot_g1_run_v1/2026-10-28_09-08-20_formal_phase_v1_seed42/model_1200.pt",
+        "iteration": 1200,
+        "sha256": "1e90f313278239d4fffb847904b5e589c41ccfa5fb711360f7ce532541839f7d"
+      },
+      {
+        "path": "/data/踩高跷/logs/rsl_rl/stiltbot_g1_run_v1/2026-10-28_09-08-20_formal_phase_v1_seed42/model_1300.pt",
+        "iteration": 1300,
+        "sha256": "726a43c38f1d11c1a9a13ba16e4c6a19f94a64f7051a57f8bbf8f6982a49a56b"
+      },
+      {
+        "path": "/data/踩高跷/logs/rsl_rl/stiltbot_g1_run_v1/2026-10-28_09-08-20_formal_phase_v1_seed42/model_1400.pt",
+        "iteration": 1400,
+        "sha256": "db7d85e6b577c22101261f634e305e8a90c8ea18bb8cf6640761c2534f5046b7"
+      },
+      {
+        "path": "/data/踩高跷/logs/rsl_rl/stiltbot_g1_run_v1/2026-10-28_09-08-20_formal_phase_v1_seed42/model_1499.pt",
+        "iteration": 1499,
+        "sha256": "b8ac165722d2fd23946f3059282e612fabe7d05a6326522c963925e83bebe360"
+      }
+    ]
+  },
+  "demonstration": {
+    "status": "recorded",
+    "video": "/data/踩高跷/logs/rsl_rl/stiltbot_g1_run_v1/2026-10-28_09-08-20_formal_phase_v1_seed42/videos/play/rl-video-episode-0.mp4",
+    "video_bytes": 401720,
+    "video_sha256": "edb7c5a24760f76d338c0a1973a80f27687d2069bd99f4eeef75d10569b9764c"
+  },
+  "metrics_last": {
+    "Episode_Reward/action_rate_l2": {
+      "step": 1499,
+      "value": -0.24414269626140594
+    },
+    "Episode_Reward/ang_vel_xy_l2": {
+      "step": 1499,
+      "value": -0.02724454179406166
+    },
+    "Episode_Reward/dof_acc_l2": {
+      "step": 1499,
+      "value": -0.0235806405544281
+    },
+    "Episode_Reward/dof_pos_limits": {
+      "step": 1499,
+      "value": -0.011463063769042492
+    },
+    "Episode_Reward/dof_torques_l2": {
+      "step": 1499,
+      "value": -0.019973933696746826
+    },
+    "Episode_Reward/feet_slide": {
+      "step": 1499,
+      "value": -0.014416985213756561
+    },
+    "Episode_Reward/flat_orientation_l2": {
+      "step": 1499,
+      "value": -0.00751615222543478
+    },
+    "Episode_Reward/joint_deviation_arms": {
+      "step": 1499,
+      "value": -0.1041027307510376
+    },
+    "Episode_Reward/joint_deviation_fingers": {
+      "step": 1499,
+      "value": -0.09755756705999374
+    },
+    "Episode_Reward/joint_deviation_hip": {
+      "step": 1499,
+      "value": -0.07932485640048981
+    },
+    "Episode_Reward/joint_deviation_torso": {
+      "step": 1499,
+      "value": -0.04969140142202377
+    },
+    "Episode_Reward/lin_vel_z_l2": {
+      "step": 1499,
+      "value": -0.025148268789052963
+    },
+    "Episode_Reward/run_contact_phase": {
+      "step": 1499,
+      "value": 1.9687185287475586
+    },
+    "Episode_Reward/run_flight_phase": {
+      "step": 1499,
+      "value": 0.25729507207870483
+    },
+    "Episode_Reward/termination_penalty": {
+      "step": 1499,
+      "value": 0.0
+    },
+    "Episode_Reward/track_ang_vel_z_exp": {
+      "step": 1499,
+      "value": 0.6626891493797302
+    },
+    "Episode_Reward/track_lin_vel_xy_exp": {
+      "step": 1499,
+      "value": 1.7485504150390625
+    },
+    "Episode_Termination/base_contact": {
+      "step": 1499,
+      "value": 0.0
+    },
+    "Episode_Termination/time_out": {
+      "step": 1499,
+      "value": 1.0
+    },
+    "Loss/entropy": {
+      "step": 1499,
+      "value": 31.85926055908203
+    },
+    "Loss/learning_rate": {
+      "step": 1499,
+      "value": 2.2500000341096893e-05
+    },
+    "Loss/surrogate": {
+      "step": 1499,
+      "value": -0.0011905018473044038
+    },
+    "Loss/value_function": {
+      "step": 1499,
+      "value": 0.001314433291554451
+    },
+    "Metrics/base_velocity/error_vel_xy": {
+      "step": 1499,
+      "value": 0.3572463393211365
+    },
+    "Metrics/base_velocity/error_vel_yaw": {
+      "step": 1499,
+      "value": 0.7038863897323608
+    },
+    "Perf/collection time": {
+      "step": 1499,
+      "value": 0.9293549060821533
+    },
+    "Perf/learning_time": {
+      "step": 1499,
+      "value": 0.052583932876586914
+    },
+    "Perf/total_fps": {
+      "step": 1499,
+      "value": 100112.0
+    },
+    "Policy/mean_noise_std": {
+      "step": 1499,
+      "value": 0.9233096837997437
+    },
+    "Train/mean_episode_length": {
+      "step": 1499,
+      "value": 1000.0
+    },
+    "Train/mean_episode_length/time": {
+      "step": 1448,
+      "value": 1000.0
+    },
+    "Train/mean_reward": {
+      "step": 1499,
+      "value": 78.74482727050781
+    },
+    "Train/mean_reward/time": {
+      "step": 1448,
+      "value": 78.74482727050781
+    }
+  },
+  "provenance": {
+    "git_revision": "1b820fbf0678d17cc836a8a93ed0e525178e9ce2",
+    "repo": "/data/踩高跷",
+    "stilt_geometry_registered": false,
+    "asset_scope": "native Unitree G1 minimal asset on flat ground"
+  }
+}

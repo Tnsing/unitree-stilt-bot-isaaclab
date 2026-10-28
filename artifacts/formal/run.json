@@ -1,0 +1,319 @@
+{
+  "schema": "stiltbot.formal-milestone.v1",
+  "created_at_utc": "2026-10-27T14:32:29.423952+00:00",
+  "skill": "run",
+  "task": "StiltBot-G1-Run-v0",
+  "experiment": "stiltbot_g1_run_formal",
+  "training": {
+    "status": "completed",
+    "num_envs": 4096,
+    "max_iterations": 1500,
+    "seed": 42,
+    "run_dir": "/data/踩高跷/logs/rsl_rl/stiltbot_g1_run_formal/2026-10-27_22-03-32_formal_seed42",
+    "train_log": "/data/踩高跷/logs/formal_suite/run.train.log",
+    "config_env": "/data/踩高跷/logs/rsl_rl/stiltbot_g1_run_formal/2026-10-27_22-03-32_formal_seed42/params/env.yaml",
+    "config_agent": "/data/踩高跷/logs/rsl_rl/stiltbot_g1_run_formal/2026-10-27_22-03-32_formal_seed42/params/agent.yaml",
+    "event_files": [
+      "/data/踩高跷/logs/rsl_rl/stiltbot_g1_run_formal/2026-10-27_22-03-32_formal_seed42/events.out.tfevents.1793109824.NSWS1050.1785214.0"
+    ],
+    "checkpoints": [
+      {
+        "path": "/data/踩高跷/logs/rsl_rl/stiltbot_g1_run_formal/2026-10-27_22-03-32_formal_seed42/model_0.pt",
+        "iteration": 0,
+        "sha256": "a7697546672f2d8778c78bfad9d6e2397e47c4c8fdbce1d743951a7766240bd3"
+      },
+      {
+        "path": "/data/踩高跷/logs/rsl_rl/stiltbot_g1_run_formal/2026-10-27_22-03-32_formal_seed42/model_50.pt",
+        "iteration": 50,
+        "sha256": "96a13beea286757bac6f6797273a6dc6828c5b1565b486bcbf87d2dfbff34194"
+      },
+      {
+        "path": "/data/踩高跷/logs/rsl_rl/stiltbot_g1_run_formal/2026-10-27_22-03-32_formal_seed42/model_100.pt",
+        "iteration": 100,
+        "sha256": "f84526700df662efd39f43963b0ddbbf31ca676f6ead44416fcf7e3ce862bdd1"
+      },
+      {
+        "path": "/data/踩高跷/logs/rsl_rl/stiltbot_g1_run_formal/2026-10-27_22-03-32_formal_seed42/model_150.pt",
+        "iteration": 150,
+        "sha256": "20afe0e611be4ec3dc2a538abfc56d0505855deb7b4c44cba7ae0c68ba7e6bb1"
+      },
+      {
+        "path": "/data/踩高跷/logs/rsl_rl/stiltbot_g1_run_formal/2026-10-27_22-03-32_formal_seed42/model_200.pt",
+        "iteration": 200,
+        "sha256": "b3f48b02b75bf5a6d68fdf494ebca6bf28a5d8a860c6b84d206f9c0c2062d423"
+      },
+      {
+        "path": "/data/踩高跷/logs/rsl_rl/stiltbot_g1_run_formal/2026-10-27_22-03-32_formal_seed42/model_250.pt",
+        "iteration": 250,
+        "sha256": "666caa0128286a41bba5b2da9162977a9211b5a241f171c4d34fc1d64b6f16f3"
+      },
+      {
+        "path": "/data/踩高跷/logs/rsl_rl/stiltbot_g1_run_formal/2026-10-27_22-03-32_formal_seed42/model_300.pt",
+        "iteration": 300,
+        "sha256": "b414b76c165945a867c570187bc99b454a9b75c4bdbc6a0d20f0dd862bc48594"
+      },
+      {
+        "path": "/data/踩高跷/logs/rsl_rl/stiltbot_g1_run_formal/2026-10-27_22-03-32_formal_seed42/model_350.pt",
+        "iteration": 350,
+        "sha256": "44b6790f4e637fd67bed25bfb91bb10ed83bea6a79522c4c43b4b93ab86a9d46"
+      },
+      {
+        "path": "/data/踩高跷/logs/rsl_rl/stiltbot_g1_run_formal/2026-10-27_22-03-32_formal_seed42/model_400.pt",
+        "iteration": 400,
+        "sha256": "156fd3357935a8ea840ef9b1087fe02fe6ddf82f33379ff78e9e86fa60837539"
+      },
+      {
+        "path": "/data/踩高跷/logs/rsl_rl/stiltbot_g1_run_formal/2026-10-27_22-03-32_formal_seed42/model_450.pt",
+        "iteration": 450,
+        "sha256": "1904a2a7b4e7807fbe523492a723bc67a76dbc465e9ee0b09720284c7f9d3c21"
+      },
+      {
+        "path": "/data/踩高跷/logs/rsl_rl/stiltbot_g1_run_formal/2026-10-27_22-03-32_formal_seed42/model_500.pt",
+        "iteration": 500,
+        "sha256": "85604c6f9e5e2c45f78d6f1b15266e9fd89383c78363c4155da1fa47f586f970"
+      },
+      {
+        "path": "/data/踩高跷/logs/rsl_rl/stiltbot_g1_run_formal/2026-10-27_22-03-32_formal_seed42/model_550.pt",
+        "iteration": 550,
+        "sha256": "100af650f5cc096d9eee691397af5518adb9b59de3ad7ea3154c70e7bf86968e"
+      },
+      {
+        "path": "/data/踩高跷/logs/rsl_rl/stiltbot_g1_run_formal/2026-10-27_22-03-32_formal_seed42/model_600.pt",
+        "iteration": 600,
+        "sha256": "4b839c309c04c9f858823a121c62711e239f5b70d8480f8bf2b65ad961a06ec9"
+      },
+      {
+        "path": "/data/踩高跷/logs/rsl_rl/stiltbot_g1_run_formal/2026-10-27_22-03-32_formal_seed42/model_650.pt",
+        "iteration": 650,
+        "sha256": "6b9fc6bc3673db14e5e59e82beca88da307bbae23d9ff97b555d549551980b2f"
+      },
+      {
+        "path": "/data/踩高跷/logs/rsl_rl/stiltbot_g1_run_formal/2026-10-27_22-03-32_formal_seed42/model_700.pt",
+        "iteration": 700,
+        "sha256": "cfd81b1e628e1f190d4ca7ecfd270dc525714475fce8456e2ea7bfdbc7a0d909"
+      },
+      {
+        "path": "/data/踩高跷/logs/rsl_rl/stiltbot_g1_run_formal/2026-10-27_22-03-32_formal_seed42/model_750.pt",
+        "iteration": 750,
+        "sha256": "71c7f245bb887bb47bf174e9876530db72a9850d3c0f5766699080c8101cf353"
+      },
+      {
+        "path": "/data/踩高跷/logs/rsl_rl/stiltbot_g1_run_formal/2026-10-27_22-03-32_formal_seed42/model_800.pt",
+        "iteration": 800,
+        "sha256": "1bd92ada519a19b40fe06965d9a5dc6dd971476c6a982f310683d895bc5b9a7d"
+      },
+      {
+        "path": "/data/踩高跷/logs/rsl_rl/stiltbot_g1_run_formal/2026-10-27_22-03-32_formal_seed42/model_850.pt",
+        "iteration": 850,
+        "sha256": "b792c4efbf898a67ed0decabd530af0f862e3708a9653fee48686f74ab5c8404"
+      },
+      {
+        "path": "/data/踩高跷/logs/rsl_rl/stiltbot_g1_run_formal/2026-10-27_22-03-32_formal_seed42/model_900.pt",
+        "iteration": 900,
+        "sha256": "b572df5cfd3b4c52ac1ac682f790ebcf3e452756b4bcfd66af27080e70d5169b"
+      },
+      {
+        "path": "/data/踩高跷/logs/rsl_rl/stiltbot_g1_run_formal/2026-10-27_22-03-32_formal_seed42/model_950.pt",
+        "iteration": 950,
+        "sha256": "cc88d8897d71569bfdaa2398e0b169f1f0da2193ea172d18537a5f50d6db53ac"
+      },
+      {
+        "path": "/data/踩高跷/logs/rsl_rl/stiltbot_g1_run_formal/2026-10-27_22-03-32_formal_seed42/model_1000.pt",
+        "iteration": 1000,
+        "sha256": "2a557f5c680ee93972803aea560f0774c4fc124e18bfe8a12dadc25c9d646b13"
+      },
+      {
+        "path": "/data/踩高跷/logs/rsl_rl/stiltbot_g1_run_formal/2026-10-27_22-03-32_formal_seed42/model_1050.pt",
+        "iteration": 1050,
+        "sha256": "72a2d00e0e52bf10fd6662a952d202567c15a79ff86455e2516778ef56897fe3"
+      },
+      {
+        "path": "/data/踩高跷/logs/rsl_rl/stiltbot_g1_run_formal/2026-10-27_22-03-32_formal_seed42/model_1100.pt",
+        "iteration": 1100,
+        "sha256": "3327a3c558769229d419d8448cbed626e9bad03f46d1d00808b28d2e43580d53"
+      },
+      {
+        "path": "/data/踩高跷/logs/rsl_rl/stiltbot_g1_run_formal/2026-10-27_22-03-32_formal_seed42/model_1150.pt",
+        "iteration": 1150,
+        "sha256": "84eb3521d3aeac00a5f4456a82272e566629563e65329df751bfb3bbc78522a5"
+      },
+      {
+        "path": "/data/踩高跷/logs/rsl_rl/stiltbot_g1_run_formal/2026-10-27_22-03-32_formal_seed42/model_1200.pt",
+        "iteration": 1200,
+        "sha256": "b545582d62d655a88624a653e5516522b62fbd5d5ba4909c1ace555f577583f8"
+      },
+      {
+        "path": "/data/踩高跷/logs/rsl_rl/stiltbot_g1_run_formal/2026-10-27_22-03-32_formal_seed42/model_1250.pt",
+        "iteration": 1250,
+        "sha256": "a1542cb0a830ad11a9c73e3908b8a9d1c6c6ed2a0a326d695bba2ae8e26cdc52"
+      },
+      {
+        "path": "/data/踩高跷/logs/rsl_rl/stiltbot_g1_run_formal/2026-10-27_22-03-32_formal_seed42/model_1300.pt",
+        "iteration": 1300,
+        "sha256": "eb4e2e49619ca839c5f3268baba6f940181e7bc7de46749fad7c4590bdc0127c"
+      },
+      {
+        "path": "/data/踩高跷/logs/rsl_rl/stiltbot_g1_run_formal/2026-10-27_22-03-32_formal_seed42/model_1350.pt",
+        "iteration": 1350,
+        "sha256": "4e8dff490e2c65600625c4841cfcd181d7cd22e4b0a2b82011018ea7692aa03d"
+      },
+      {
+        "path": "/data/踩高跷/logs/rsl_rl/stiltbot_g1_run_formal/2026-10-27_22-03-32_formal_seed42/model_1400.pt",
+        "iteration": 1400,
+        "sha256": "a5974ea4f7ca7332d7a8bfde560a4d372c07b15581cb479db749fc3de18d149a"
+      },
+      {
+        "path": "/data/踩高跷/logs/rsl_rl/stiltbot_g1_run_formal/2026-10-27_22-03-32_formal_seed42/model_1450.pt",
+        "iteration": 1450,
+        "sha256": "bd4e583a82f383ec7705be1176d1911e962c11aa5aefabb0666799b45e68b2c9"
+      },
+      {
+        "path": "/data/踩高跷/logs/rsl_rl/stiltbot_g1_run_formal/2026-10-27_22-03-32_formal_seed42/model_1499.pt",
+        "iteration": 1499,
+        "sha256": "824407e8b612f36d473b0cb37ae2a518b343848af20547c7cdcf6a1c5a3af4df"
+      }
+    ]
+  },
+  "demonstration": {
+    "status": "recorded",
+    "video": "/data/踩高跷/logs/rsl_rl/stiltbot_g1_run_formal/2026-10-27_22-03-32_formal_seed42/videos/play/rl-video-episode-0.mp4",
+    "video_bytes": 6507454,
+    "video_sha256": "df221884da81c664940dc49e8ad6435096b411201394a037f22d5b95e15ffef3"
+  },
+  "metrics_last": {
+    "Episode_Reward/action_rate_l2": {
+      "step": 1499,
+      "value": -0.1834513396024704
+    },
+    "Episode_Reward/ang_vel_xy_l2": {
+      "step": 1499,
+      "value": -0.01152326911687851
+    },
+    "Episode_Reward/dof_acc_l2": {
+      "step": 1499,
+      "value": -0.01693563535809517
+    },
+    "Episode_Reward/dof_pos_limits": {
+      "step": 1499,
+      "value": -0.003777627367526293
+    },
+    "Episode_Reward/dof_torques_l2": {
+      "step": 1499,
+      "value": -0.012420699000358582
+    },
+    "Episode_Reward/feet_air_time": {
+      "step": 1499,
+      "value": 0.0834946259856224
+    },
+    "Episode_Reward/feet_slide": {
+      "step": 1499,
+      "value": -0.01971437782049179
+    },
+    "Episode_Reward/flat_orientation_l2": {
+      "step": 1499,
+      "value": -0.004065664019435644
+    },
+    "Episode_Reward/joint_deviation_arms": {
+      "step": 1499,
+      "value": -0.07406945526599884
+    },
+    "Episode_Reward/joint_deviation_fingers": {
+      "step": 1499,
+      "value": -0.05565059185028076
+    },
+    "Episode_Reward/joint_deviation_hip": {
+      "step": 1499,
+      "value": -0.012577812187373638
+    },
+    "Episode_Reward/joint_deviation_torso": {
+      "step": 1499,
+      "value": -0.017418229952454567
+    },
+    "Episode_Reward/lin_vel_z_l2": {
+      "step": 1499,
+      "value": -0.006230005994439125
+    },
+    "Episode_Reward/termination_penalty": {
+      "step": 1499,
+      "value": 0.0
+    },
+    "Episode_Reward/track_ang_vel_z_exp": {
+      "step": 1499,
+      "value": 0.7179614305496216
+    },
+    "Episode_Reward/track_lin_vel_xy_exp": {
+      "step": 1499,
+      "value": 0.8995935320854187
+    },
+    "Episode_Termination/base_contact": {
+      "step": 1499,
+      "value": 0.00537109375
+    },
+    "Episode_Termination/time_out": {
+      "step": 1499,
+      "value": 0.99462890625
+    },
+    "Loss/entropy": {
+      "step": 1499,
+      "value": 25.790884017944336
+    },
+    "Loss/learning_rate": {
+      "step": 1499,
+      "value": 7.593750342493877e-05
+    },
+    "Loss/surrogate": {
+      "step": 1499,
+      "value": -0.0028598010540008545
+    },
+    "Loss/value_function": {
+      "step": 1499,
+      "value": 0.0013152343453839421
+    },
+    "Metrics/base_velocity/error_vel_xy": {
+      "step": 1499,
+      "value": 0.31506022810935974
+    },
+    "Metrics/base_velocity/error_vel_yaw": {
+      "step": 1499,
+      "value": 0.5528720617294312
+    },
+    "Perf/collection time": {
+      "step": 1499,
+      "value": 1.0044405460357666
+    },
+    "Perf/learning_time": {
+      "step": 1499,
+      "value": 0.055707693099975586
+    },
+    "Perf/total_fps": {
+      "step": 1499,
+      "value": 92726.0
+    },
+    "Policy/mean_noise_std": {
+      "step": 1499,
+      "value": 0.8193824291229248
+    },
+    "Train/mean_episode_length": {
+      "step": 1499,
+      "value": 1000.0
+    },
+    "Train/mean_episode_length/time": {
+      "step": 1596,
+      "value": 1000.0
+    },
+    "Train/mean_reward": {
+      "step": 1499,
+      "value": 25.61196517944336
+    },
+    "Train/mean_reward/time": {
+      "step": 1596,
+      "value": 25.61196517944336
+    }
+  },
+  "provenance": {
+    "git_revision": "e4e2932f1d92c0c89d3842e85dd809004d4f577e",
+    "repo": "/data/踩高跷",
+    "stilt_geometry_registered": false,
+    "asset_scope": "native Unitree G1 minimal asset on flat ground"
+  }
+}
