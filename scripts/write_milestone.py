@@ -48,6 +48,8 @@ def main() -> None:
     ap.add_argument("--seed", type=int, required=True)
     ap.add_argument("--train-log", required=True)
     ap.add_argument("--out", required=True)
+    ap.add_argument("--resume-from", default=None)
+    ap.add_argument("--effective-iterations", type=int, default=None)
     args = ap.parse_args()
 
     run_dir = Path(args.run_dir).resolve()
@@ -78,6 +80,8 @@ def main() -> None:
             "status": "completed",
             "num_envs": args.num_envs,
             "max_iterations": args.max_iterations,
+            "effective_iterations": args.effective_iterations or args.max_iterations,
+            "resumed_from": args.resume_from,
             "seed": args.seed,
             "run_dir": str(run_dir),
             "train_log": str(train_log),

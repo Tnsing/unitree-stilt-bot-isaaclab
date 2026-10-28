@@ -45,3 +45,11 @@ _register(
     "stilt_bot.tasks.skill_g1_env_cfg:G1DanceEnvCfg",
     "stilt_bot.tasks.skill_g1_env_cfg:G1DancePPORunnerCfg",
 )
+
+# Versioned registrations preserve V0 checkpoint compatibility and failed controls.
+for _skill in ['Run','Jump','Dance']:
+    _register(
+        f'StiltBot-G1-{_skill}-v1',
+        f'stilt_bot.tasks.phase_g1_env_cfg:G1{_skill}V1EnvCfg',
+        f'stilt_bot.tasks.phase_g1_env_cfg:G1{_skill}V1PPORunnerCfg',
+    )
